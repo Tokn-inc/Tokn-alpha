@@ -1,0 +1,372 @@
+/***************************** Coming Soon *****************************/
+
+.App {
+  font-family: "roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.logo {
+  height: 20vh;
+  width: 8vw;
+  position: absolute;
+  top: 28%;
+}
+
+.coming {
+  color: white;
+  position: absolute;
+  top: 52%;
+}
+
+.early-access{
+  background-color: transparent;
+  color: #24A2FD;
+  border-radius: 100px;
+  border-color: #24A2FD !important;
+  border-style: solid;
+  font-weight: 500;
+  position: absolute;
+  top: 70%;
+  left: 44.5%;
+  padding: 0.2rem 2.5rem;
+}
+
+.early-access:hover {
+  background-color: #24A2FD;
+  color: white;
+}
+
+.login-link {
+  color: #24A2FD;
+  position: absolute;
+  top: 78%;
+  left: 48.5%;
+}
+
+/***************************** Input *****************************/
+
+.white-container {
+  color: gray;
+  display: inline-block;
+  background-color: white;
+  border-radius: 50px;
+  font-weight: 500;
+  margin-top: 6rem;
+  padding: 3rem 5rem;
+  box-shadow: 0 5px 10px rgba(66, 63, 63, 0.2);
+}
+
+.wc-input {
+  text-align: center;
+  padding: 2rem 5rem;
+  position: relative;
+  top: 6rem;
+}
+
+.cross {
+  color: black;
+  display: inline-block;
+  opacity: 30%;
+  font-size: 3rem;
+  font-weight: lighter;
+  transform: rotate(45deg);
+  width: 80px;
+  position: relative;
+  right: 12.5rem;
+  bottom: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.input-code {
+  display: inline-block;
+  margin-top: 0;
+  position: relative;
+  bottom: 4rem;
+}
+
+.code-box {
+  width: 2.5rem;
+  height: 3.5rem;
+  border-radius: 10px !important;
+  margin: auto 0.3rem;
+}
+
+.hyphen {
+  display: inline-block;
+  margin: auto 0.3rem;
+}
+
+.cta {
+  background-color: transparent;
+  color: #24A2FD;
+  border-radius: 100px;
+  border-color: #24A2FD !important;
+  border-style: solid;
+  font-weight: 500;
+  margin-top: 3rem;
+  padding: 0.2rem 2.5rem;
+}
+
+.cta:hover {
+  background-color: #24A2FD;
+  color: white;
+}
+
+/***************************** Create Account *****************************/
+
+.create {
+  display: flex;
+  font-weight: normal;
+  justify-content: center;
+  margin-bottom: 3rem;
+  opacity: 85%;
+}
+
+.login-label {
+  font-size: 0.8rem;
+  opacity: 85%;
+  margin-bottom: 3px;
+  margin-left: 13px;
+}
+
+input {
+  background-color: rgba(0, 0, 0, 10%);
+  border-style: none;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  margin-bottom: 35px;
+  opacity: 70%;
+  padding: 5px 15px;
+  width: 300px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.pwd-input {
+  margin-bottom: 15px;
+}
+
+.metamask-div {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 7%);
+  border-radius: 10px;
+  width: 50%;
+  margin-top: 70px;
+  margin-left: 20%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.metamask {
+  height: 50px;
+  width: 50px;
+}
+
+.connect {
+  color: #24A2FD;
+  font-size: 0.6rem;
+  display: flex;
+  justify-content: center;
+  margin-left: -25px;
+  margin-top: 5px;
+}
+
+/***************************** Buy Now *****************************/
+
+.white-container2 {
+  color: gray;
+  display: inline-block;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 5px 10px rgba(66, 63, 63, 0.2);
+  font-weight: 500;
+  margin-top: 6rem;
+  padding: 3rem 5rem;
+}
+
+.info {
+  display: flex;
+  height: 25px;
+  width: 25px;
+  justify-content: center;
+  vertical-align: middle;
+  border-radius: 100%;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 10%) !important;
+  color: rgba(0, 0, 0, 20%);
+  font-weight: bold;
+  font-size: 0.9rem;
+  position: relative;
+  bottom: 30px;
+  right: 50px;
+}
+
+.song-img {
+  display: inline-block;
+  height: 15rem;
+  width: 15rem;
+  background-color: #FF5DA2;
+  border-radius: 25px;
+  position: relative;
+  bottom: 4rem;
+}
+
+.song-info {
+  display: inline-block;
+  position: absolute;
+  bottom: 12rem;
+  left: 30rem;
+}
+
+.song-info h1 {
+  letter-spacing: -0.7px;
+  margin-bottom: -7px;
+}
+
+.song-info h5 {
+  margin-top: 0;
+}
+
+.profile-pic {
+  display: inline-block;
+  background-color: #24A2FD;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  box-shadow: 1px 1px 5px rgba(66, 63, 63, 0.4);
+  margin-right: 8px;
+  position: relative;
+  top: 7px;
+}
+
+.white-container-inner {
+  color: gray;
+  display: inline-block;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(66, 63, 63, 0.35);
+  font-weight: 500;
+  margin-left: 5rem;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+.qty {
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+  margin-left: -3.7rem;  
+}
+
+.qty-input {
+  width: 60%;
+  margin-bottom: 3rem;
+  height: 2rem;
+}
+
+.left {
+  font-size: 0.75rem;
+  font-weight: normal;
+  float: left;
+  margin-left: 10px;
+}
+
+.right {
+  font-size: 0.75rem;
+  font-weight: normal;
+  float: right;
+  margin-right: 10px;
+}
+
+hr {
+  margin: 0 auto 5px;
+  width: 15rem;
+}
+
+.terms {
+  color: #24A2FD;
+  display: inline-block;
+  font-size: 0.6rem;
+  margin-top: 2rem;
+}
+
+.checkbox {
+  width: 10px;
+  margin-left: 7px;
+  position: relative;
+  top: 3px;
+}
+
+.buy-now-btn {
+  background-color: #2BE743;
+  border-radius: 100px;
+  border-style: none;
+  font-size: 0.8rem;
+  padding: 7px 25px;
+  position: relative;
+  bottom: 1rem;
+}
+
+.buy-now-btn:hover {
+  background-color: #2BE743;
+}
+
+.buy-now-btn:focus {
+  background-color: #2BE743;
+}
+
+.btn-inactive {
+  opacity: 40%;
+}
+
+/***************************** Congrats *****************************/
+
+.wci2 {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.congrats {
+  height: 20px;
+  width: 20px;
+  margin: auto 5px;
+}
+
+.large-text {
+  font-size: 0.75rem;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+}
+
+.blue-text {
+  color: #24A2FD;
+}
+
+.bold-text {
+  font-weight: 500;
+}
+
+.twitter, .telegram, .instagram {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  position: relative;
+  left: 10px;
+}
+
+.song-img2 {
+  margin-bottom: -3.4rem;
+}

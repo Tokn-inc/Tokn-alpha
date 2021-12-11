@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tokn Music</title>
+    <link rel="icon" href="./tokn.jpg">
+    <link
+      href="https://fonts.googleapis.com/css?family=McLaren|Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/fae5fea09c.js" crossorigin="anonymous"></script>
+    <script language="javascript" type="text/javascript" src="./toknABI.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script src="../src/index.js" type="text/jsx"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+
+	<script
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+      integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+      crossorigin="anonymous"></script>
+
+    <script>
+
+      var tokn;
+      
+      $(document).ready(function()
+      {
+
+		
+
+		if(typeof window.ethereum != 'undefined') {
+        	web3 = new Web3(web3.currentProvider);
+		} else {
+			alert("Connect a wallet");
+			web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:3000'));
+	}
+
+      var address = "0xdf4051Bb7e8999c572E1CD5d213181F503c48F37";  
+  
+      tokn = new web3.eth.Contract(toknABI, address);
+
+      $('#checkbox').click(function() {
+      tokn.methods.symbolToToknId("BRUNO").call().then(function(result){
+          $('#buy-now').append(result);
+        })
+      })
+
+      //var acc = accounts[0];
+      //tokn.methods.buyTokn(id, qty).send({from: acc});
+
+    </script>
+
+  </body>
+</html>
