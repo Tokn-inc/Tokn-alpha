@@ -23,7 +23,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -42,12 +43,13 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"_totalMinted\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"totalMinted\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/mvpManager.sol\":\"MVPManager\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/mvpManager.sol\":{\"keccak256\":\"0xccd4527736a3d4c8ca8584d8507ff38f177bc0182413a8cd313d4a0bd3df9f95\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e1af67021314eb97f4770b25668ce9143ee267135531fbaa03205746c11d7736\",\"dweb:/ipfs/QmVuot33w5fmRnQhr7yngyJiaTGS6xaFJEAFqE1iNSSxxk\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5061018e806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80639c544f3c1461003b5780639d7f4ebf1461006b575b600080fd5b610055600480360381019061005091906100e4565b61009b565b604051610062919061011c565b60405180910390f35b610085600480360381019061008091906100e4565b6100b3565b604051610092919061011c565b60405180910390f35b60006020528060005260406000206000915090505481565b6000806000838152602001908152602001600020549050919050565b6000813590506100de81610141565b92915050565b6000602082840312156100f657600080fd5b6000610104848285016100cf565b91505092915050565b61011681610137565b82525050565b6000602082019050610131600083018461010d565b92915050565b6000819050919050565b61014a81610137565b811461015557600080fd5b5056fea264697066735822122013d3845be13512ef188dcbe984788b95207cf1ab1f836d09351606e9605357b364736f6c63430008000033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80639c544f3c1461003b5780639d7f4ebf1461006b575b600080fd5b610055600480360381019061005091906100e4565b61009b565b604051610062919061011c565b60405180910390f35b610085600480360381019061008091906100e4565b6100b3565b604051610092919061011c565b60405180910390f35b60006020528060005260406000206000915090505481565b6000806000838152602001908152602001600020549050919050565b6000813590506100de81610141565b92915050565b6000602082840312156100f657600080fd5b6000610104848285016100cf565b91505092915050565b61011681610137565b82525050565b6000602082019050610131600083018461010d565b92915050565b6000819050919050565b61014a81610137565b811461015557600080fd5b5056fea264697066735822122013d3845be13512ef188dcbe984788b95207cf1ab1f836d09351606e9605357b364736f6c63430008000033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"_totalMinted\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"totalMinted\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/mvpManager.sol\":\"MVPManager\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/mvpManager.sol\":{\"keccak256\":\"0x38b7acba8a1e8a23ed0009626e0572656c33d31eb3ee5969c7b4982854e9db0b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://39aeb0cb448a382a99ed30f2c2708c5ed1c42ee1aa91351ae72a860cfba43129\",\"dweb:/ipfs/QmfBquQoh1jB7MHZcVo2BZxUBRDhwZe2yqPgYqH2JXDsiD\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061018e806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80639c544f3c1461003b5780639d7f4ebf1461006b575b600080fd5b610055600480360381019061005091906100e4565b61009b565b604051610062919061011c565b60405180910390f35b610085600480360381019061008091906100e4565b6100b3565b604051610092919061011c565b60405180910390f35b60006020528060005260406000206000915090505481565b6000806000838152602001908152602001600020549050919050565b6000813590506100de81610141565b92915050565b6000602082840312156100f657600080fd5b6000610104848285016100cf565b91505092915050565b61011681610137565b82525050565b6000602082019050610131600083018461010d565b92915050565b6000819050919050565b61014a81610137565b811461015557600080fd5b5056fea2646970667358221220958527adf0a188e6f4fd0532034c948dd3f9295f3234b71fcc8ab14786547efb64736f6c63430008000033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80639c544f3c1461003b5780639d7f4ebf1461006b575b600080fd5b610055600480360381019061005091906100e4565b61009b565b604051610062919061011c565b60405180910390f35b610085600480360381019061008091906100e4565b6100b3565b604051610092919061011c565b60405180910390f35b60006020528060005260406000206000915090505481565b6000806000838152602001908152602001600020549050919050565b6000813590506100de81610141565b92915050565b6000602082840312156100f657600080fd5b6000610104848285016100cf565b91505092915050565b61011681610137565b82525050565b6000602082019050610131600083018461010d565b92915050565b6000819050919050565b61014a81610137565b811461015557600080fd5b5056fea2646970667358221220958527adf0a188e6f4fd0532034c948dd3f9295f3234b71fcc8ab14786547efb64736f6c63430008000033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [
@@ -643,23 +645,23 @@
       "name": "#utility.yul"
     }
   ],
-  "sourceMap": "60:234:11:-:0;;;140:24;;;;;;;;;;60:234;;;;;;",
-  "deployedSourceMap": "60:234:11:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;86:47;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;174:117;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;86:47;;;;;;;;;;;;;;;;;:::o;174:117::-;236:7;265:12;:16;278:2;265:16;;;;;;;;;;;;258:23;;174:117;;;:::o;7:139:12:-;;91:6;78:20;69:29;;107:33;134:5;107:33;:::i;:::-;59:87;;;;:::o;152:262::-;;260:2;248:9;239:7;235:23;231:32;228:2;;;276:1;273;266:12;228:2;319:1;344:53;389:7;380:6;369:9;365:22;344:53;:::i;:::-;334:63;;290:117;218:196;;;;:::o;420:118::-;507:24;525:5;507:24;:::i;:::-;502:3;495:37;485:53;;:::o;544:222::-;;675:2;664:9;660:18;652:26;;688:71;756:1;745:9;741:17;732:6;688:71;:::i;:::-;642:124;;;;:::o;772:77::-;;838:5;827:16;;817:32;;;:::o;855:122::-;928:24;946:5;928:24;:::i;:::-;921:5;918:35;908:2;;967:1;964;957:12;908:2;898:79;:::o",
-  "source": "//SPDX-License-Identifier:  MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract MVPManager{\r\n\r\n  mapping(uint256 => uint256) public _totalMinted;\r\n\r\n  constructor (){\r\n      }\r\n\r\n      function totalMinted(uint256 id) public view virtual returns (uint256) {\r\n          return _totalMinted[id];\r\n      }\r\n}\r\n",
-  "sourcePath": "C:\\Users\\jjrab\\OneDrive\\Desktop\\Tokndev\\MVP\\contracts\\mvpManager.sol",
+  "sourceMap": "60:240:11:-:0;;;146:24;;;;;;;;;;60:240;;;;;;",
+  "deployedSourceMap": "60:240:11:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;92:47;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;180:117;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;92:47;;;;;;;;;;;;;;;;;:::o;180:117::-;242:7;271:12;:16;284:2;271:16;;;;;;;;;;;;264:23;;180:117;;;:::o;7:139:12:-;;91:6;78:20;69:29;;107:33;134:5;107:33;:::i;:::-;59:87;;;;:::o;152:262::-;;260:2;248:9;239:7;235:23;231:32;228:2;;;276:1;273;266:12;228:2;319:1;344:53;389:7;380:6;369:9;365:22;344:53;:::i;:::-;334:63;;290:117;218:196;;;;:::o;420:118::-;507:24;525:5;507:24;:::i;:::-;502:3;495:37;485:53;;:::o;544:222::-;;675:2;664:9;660:18;652:26;;688:71;756:1;745:9;741:17;732:6;688:71;:::i;:::-;642:124;;;;:::o;772:77::-;;838:5;827:16;;817:32;;;:::o;855:122::-;928:24;946:5;928:24;:::i;:::-;921:5;918:35;908:2;;967:1;964;957:12;908:2;898:79;:::o",
+  "source": "//SPDX-License-Identifier:  MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract MVPManager{\r\n      \r\n  mapping(uint256 => uint256) public _totalMinted;\r\n\r\n  constructor (){\r\n      }\r\n\r\n      function totalMinted(uint256 id) public view virtual returns (uint256) {\r\n          return _totalMinted[id];\r\n      }\r\n}\r\n",
+  "sourcePath": "C:\\Users\\jjrab\\OneDrive\\Desktop\\Tokndev\\Tokn-alpha\\Alpha-Contracts\\contracts\\mvpManager.sol",
   "ast": {
     "absolutePath": "project:/contracts/mvpManager.sol",
     "exportedSymbols": {
       "MVPManager": [
-        1944
+        1929
       ]
     },
-    "id": 1945,
+    "id": 1930,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1923,
+        "id": 1908,
         "literals": [
           "solidity",
           "^",
@@ -675,9 +677,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 1944,
+        "id": 1929,
         "linearizedBaseContracts": [
-          1944
+          1929
         ],
         "name": "MVPManager",
         "nodeType": "ContractDefinition",
@@ -685,12 +687,12 @@
           {
             "constant": false,
             "functionSelector": "9c544f3c",
-            "id": 1927,
+            "id": 1912,
             "mutability": "mutable",
             "name": "_totalMinted",
             "nodeType": "VariableDeclaration",
-            "scope": 1944,
-            "src": "86:47:11",
+            "scope": 1929,
+            "src": "92:47:11",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -698,28 +700,28 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1926,
+              "id": 1911,
               "keyType": {
-                "id": 1924,
+                "id": 1909,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "94:7:11",
+                "src": "100:7:11",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "86:27:11",
+              "src": "92:27:11",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1925,
+                "id": 1910,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "105:7:11",
+                "src": "111:7:11",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -730,63 +732,63 @@
           },
           {
             "body": {
-              "id": 1930,
+              "id": 1915,
               "nodeType": "Block",
-              "src": "154:10:11",
+              "src": "160:10:11",
               "statements": []
             },
-            "id": 1931,
+            "id": 1916,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1928,
+              "id": 1913,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "152:2:11"
+              "src": "158:2:11"
             },
             "returnParameters": {
-              "id": 1929,
+              "id": 1914,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "154:0:11"
+              "src": "160:0:11"
             },
-            "scope": 1944,
-            "src": "140:24:11",
+            "scope": 1929,
+            "src": "146:24:11",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1942,
+              "id": 1927,
               "nodeType": "Block",
-              "src": "245:46:11",
+              "src": "251:46:11",
               "statements": [
                 {
                   "expression": {
                     "baseExpression": {
-                      "id": 1938,
+                      "id": 1923,
                       "name": "_totalMinted",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1927,
-                      "src": "265:12:11",
+                      "referencedDeclaration": 1912,
+                      "src": "271:12:11",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                         "typeString": "mapping(uint256 => uint256)"
                       }
                     },
-                    "id": 1940,
+                    "id": 1925,
                     "indexExpression": {
-                      "id": 1939,
+                      "id": 1924,
                       "name": "id",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1933,
-                      "src": "278:2:11",
+                      "referencedDeclaration": 1918,
+                      "src": "284:2:11",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -797,38 +799,38 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "265:16:11",
+                    "src": "271:16:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 1937,
-                  "id": 1941,
+                  "functionReturnParameters": 1922,
+                  "id": 1926,
                   "nodeType": "Return",
-                  "src": "258:23:11"
+                  "src": "264:23:11"
                 }
               ]
             },
             "functionSelector": "9d7f4ebf",
-            "id": 1943,
+            "id": 1928,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "totalMinted",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1934,
+              "id": 1919,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1933,
+                  "id": 1918,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1943,
-                  "src": "195:10:11",
+                  "scope": 1928,
+                  "src": "201:10:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -836,10 +838,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1932,
+                    "id": 1917,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "195:7:11",
+                    "src": "201:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -848,20 +850,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "194:12:11"
+              "src": "200:12:11"
             },
             "returnParameters": {
-              "id": 1937,
+              "id": 1922,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1936,
+                  "id": 1921,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1943,
-                  "src": "236:7:11",
+                  "scope": 1928,
+                  "src": "242:7:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -869,10 +871,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1935,
+                    "id": 1920,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "236:7:11",
+                    "src": "242:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -881,34 +883,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "235:9:11"
+              "src": "241:9:11"
             },
-            "scope": 1944,
-            "src": "174:117:11",
+            "scope": 1929,
+            "src": "180:117:11",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "public"
           }
         ],
-        "scope": 1945,
-        "src": "60:234:11"
+        "scope": 1930,
+        "src": "60:240:11"
       }
     ],
-    "src": "33:263:11"
+    "src": "33:269:11"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/mvpManager.sol",
     "exportedSymbols": {
       "MVPManager": [
-        1944
+        1929
       ]
     },
-    "id": 1945,
+    "id": 1930,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1923,
+        "id": 1908,
         "literals": [
           "solidity",
           "^",
@@ -924,9 +926,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 1944,
+        "id": 1929,
         "linearizedBaseContracts": [
-          1944
+          1929
         ],
         "name": "MVPManager",
         "nodeType": "ContractDefinition",
@@ -934,12 +936,12 @@
           {
             "constant": false,
             "functionSelector": "9c544f3c",
-            "id": 1927,
+            "id": 1912,
             "mutability": "mutable",
             "name": "_totalMinted",
             "nodeType": "VariableDeclaration",
-            "scope": 1944,
-            "src": "86:47:11",
+            "scope": 1929,
+            "src": "92:47:11",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -947,28 +949,28 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1926,
+              "id": 1911,
               "keyType": {
-                "id": 1924,
+                "id": 1909,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "94:7:11",
+                "src": "100:7:11",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "86:27:11",
+              "src": "92:27:11",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1925,
+                "id": 1910,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "105:7:11",
+                "src": "111:7:11",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -979,63 +981,63 @@
           },
           {
             "body": {
-              "id": 1930,
+              "id": 1915,
               "nodeType": "Block",
-              "src": "154:10:11",
+              "src": "160:10:11",
               "statements": []
             },
-            "id": 1931,
+            "id": 1916,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1928,
+              "id": 1913,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "152:2:11"
+              "src": "158:2:11"
             },
             "returnParameters": {
-              "id": 1929,
+              "id": 1914,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "154:0:11"
+              "src": "160:0:11"
             },
-            "scope": 1944,
-            "src": "140:24:11",
+            "scope": 1929,
+            "src": "146:24:11",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1942,
+              "id": 1927,
               "nodeType": "Block",
-              "src": "245:46:11",
+              "src": "251:46:11",
               "statements": [
                 {
                   "expression": {
                     "baseExpression": {
-                      "id": 1938,
+                      "id": 1923,
                       "name": "_totalMinted",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1927,
-                      "src": "265:12:11",
+                      "referencedDeclaration": 1912,
+                      "src": "271:12:11",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                         "typeString": "mapping(uint256 => uint256)"
                       }
                     },
-                    "id": 1940,
+                    "id": 1925,
                     "indexExpression": {
-                      "id": 1939,
+                      "id": 1924,
                       "name": "id",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1933,
-                      "src": "278:2:11",
+                      "referencedDeclaration": 1918,
+                      "src": "284:2:11",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1046,38 +1048,38 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "265:16:11",
+                    "src": "271:16:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 1937,
-                  "id": 1941,
+                  "functionReturnParameters": 1922,
+                  "id": 1926,
                   "nodeType": "Return",
-                  "src": "258:23:11"
+                  "src": "264:23:11"
                 }
               ]
             },
             "functionSelector": "9d7f4ebf",
-            "id": 1943,
+            "id": 1928,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "totalMinted",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1934,
+              "id": 1919,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1933,
+                  "id": 1918,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1943,
-                  "src": "195:10:11",
+                  "scope": 1928,
+                  "src": "201:10:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1085,10 +1087,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1932,
+                    "id": 1917,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "195:7:11",
+                    "src": "201:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1097,20 +1099,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "194:12:11"
+              "src": "200:12:11"
             },
             "returnParameters": {
-              "id": 1937,
+              "id": 1922,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1936,
+                  "id": 1921,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1943,
-                  "src": "236:7:11",
+                  "scope": 1928,
+                  "src": "242:7:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1118,10 +1120,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1935,
+                    "id": 1920,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "236:7:11",
+                    "src": "242:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1130,28 +1132,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "235:9:11"
+              "src": "241:9:11"
             },
-            "scope": 1944,
-            "src": "174:117:11",
+            "scope": 1929,
+            "src": "180:117:11",
             "stateMutability": "view",
             "virtual": true,
             "visibility": "public"
           }
         ],
-        "scope": 1945,
-        "src": "60:234:11"
+        "scope": 1930,
+        "src": "60:240:11"
       }
     ],
-    "src": "33:263:11"
+    "src": "33:269:11"
   },
   "compiler": {
     "name": "solc",
     "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x985731Acbb826fe550fEa64f6405d554337fa54F",
+      "transactionHash": "0xae0ddb5c1a8cad61bb206cd93874c06f3cedf05eca40502ca67a92cfe4d8002e"
+    }
+  },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-12-11T03:43:49.547Z",
+  "updatedAt": "2021-12-13T12:38:56.070Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

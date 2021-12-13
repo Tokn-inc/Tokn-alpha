@@ -8,20 +8,18 @@ contract NFTSContract is ERC1155, Ownable, MVPManager {
   uint256 public constant SONG = 1;
   uint public rate = 4800000000000000; //in wei $20 eth
   uint public MAX_mint; //max 50
+  //NFT Purchased EventEmitter
+  event NFTPurchased(address _to, uint _count, uint _cost);
 
 //Make sure to not mint more than MAX
     modifier saleIsOpen{
         require(totalMinted(SONG) <= MAX_mint, "Sale end");
         _;
     }
-    //NFT Purchased EventEmitter
-    event NFTPurchased(address _to, uint _count, uint _cost);
 //deploy with site hosted site link
-  constructor(uint _maxMint, string memory _baseURI, uint _initialCount)  ERC1155(_baseURI){
+  constructor(uint _maxMint, string memory _baseURI)  ERC1155(_baseURI){
     //usdcContract = _usdcAddress;
     MAX_mint = _maxMint;
-    mintMyNFT(msg.sender, SONG, _initialCount);
-    _totalMinted[SONG] += _initialCount;
   }
   //Mints user bought NFT
   function mintMyNFT(address _account, uint _id, uint _quantity) public payable saleIsOpen onlyOwner {
