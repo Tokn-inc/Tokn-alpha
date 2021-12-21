@@ -77,7 +77,7 @@ module.exports = {
   mocha: {
     // timeout: 100000
   },
-  //contracts_build_directory: '../tokn-alpha/src/contracts',
+  contracts_build_directory: '../tokn-alpha/src/contracts_build',
   // Configure your compilers
   compilers: {
     solc: {
