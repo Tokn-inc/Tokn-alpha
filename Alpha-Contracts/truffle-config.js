@@ -18,10 +18,12 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+// const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const mnemonic =
+  "meat primary crew cancel cause sunny away wave conduct maid tackle hawk";
 
 module.exports = {
   /**
@@ -41,11 +43,36 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 7545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
+    },
+    rinkeby: {
+      provider: () => {
+        return new HDWalletProvider(
+          mnemonic,
+
+          "wss://rinkeby.infura.io/ws/v3/9598959dac984109a2bf08134b38afc6"
+        );
+      },
+      network_id: 4,
+      gas: 5500000,
+      // networkCheckTimeout: 1000000,
+      // gasPrice: 1000000000,
+    },
+    matic: {
+      provider: () => {
+        return new HDWalletProvider(
+          mnemonic,
+          "https://speedy-nodes-nyc.moralis.io/7ce69af8c67a5c54f3533468/polygon/mumbai"
+        );
+      },
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 300,
+      skipDryRun: true,
+    },
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
@@ -77,40 +104,34 @@ module.exports = {
   mocha: {
     // timeout: 100000
   },
-
+  contracts_build_directory: "../tokn-alpha/src/build",
   // Configure your compilers
   compilers: {
     solc: {
-       version: "0.8.0",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.0", // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
-      //  evmVersion: "byzantium"
-      // }
-    }
+      // settings: {
+      //   // See the solidity docs for advice about optimization and evmVersion
+      //   optimizer: {
+      //     enabled: false,
+      //     runs: 200,
+      //   },
+      //   evmVersion: "byzantium",
+      // },
+    },
   },
+  plugins: ["truffle-contract-size", "truffle-plugin-verify"],
 
-  // Truffle DB is currently disabled by default; to enable it, change enabled:
-  // false to enabled: true. The default storage location can also be
-  // overridden by specifying the adapter settings, as shown in the commented code below.
+  api_keys: {
+    etherscan: "V93MXMBJZP751D9HRZF956MZTFS22RD75K",
+    polygonscan: "9YHV5G9ZBJK61V1H9FRHUZUQITR658YRXW",
+  }, // Truffle DB is currently disabled by default; to enable it, change enabled: false to enabled: true
   //
-  // NOTE: It is not possible to migrate your contracts to truffle DB and you should
-  // make a backup of your artifacts to a safe location before enabling this feature.
-  //
-  // After you backed up your artifacts you can utilize db by running migrate as follows:
+  // Note: if you migrated your contracts prior to enabling this field in your Truffle project and want
+  // those previously migrated contracts available in the .db directory, you will need to run the following:
   // $ truffle migrate --reset --compile-all
-  //
-  // db: {
-    // enabled: false,
-    // host: "127.0.0.1",
-    // adapter: {
-    //   name: "sqlite",
-    //   settings: {
-    //     directory: ".db"
-    //   }
-    // }
-  // }
+
+  db: {
+    enabled: false,
+  },
 };
