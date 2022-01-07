@@ -7,7 +7,7 @@ import {
   SIGNUP_FAILURE,
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
-} from "./actionTypes";
+} from "./userActions";
 
 export const signupRequest = () => {
   return {
@@ -51,57 +51,47 @@ export const loginFailure = (error) => {
 };
 
 export const signup =
-  ({
-    userName,
-    password,
-    confirm_password,
-    email,
-    phone,
-    firstName,
-    lastName,
-    displayname,
-    avatarURL,
-    description,
-  }) =>
+  ({ username, password, confirm_password, email, walletAddress }) =>
   (dispatch) => {
-    dispatch(signupRequest);
+    dispatch(signupRequest());
     console.log("in SignUp action");
-    console.log("http://localhost:8080/users");
+
     return confirm_password === password
       ? axios
-          .post("http://localhost:8080/users", {
-            userName,
+          .post("http://localhost:8081/newUser", {
+            username,
             password,
-            confirm_password,
             email,
-            phone,
-            firstName,
-            lastName,
-            displayname,
-            avatarURL,
-            description,
+            walletAddress,
           })
           .then((response) => {
-            let user = response.data;
-            delete user["password"];
-            delete user["confirm_password"];
-            user.subscribed = false;
-            dispatch(signupSuccess(user));
+            console.log(response);
+            dispatch(signupSuccess({ username, email }));
+            window.location = "/buy-now";
           })
           .catch((error) => {
             dispatch(signupFailure(error.message));
+            alert(error.message);
           })
       : dispatch(signupFailure("ERROR: Both passwords don't match."));
   };
 
-export const login = (username, password) => (dispatch) => {
-  dispatch(loginRequest);
-  return axios
-    .post("http://localhost:8080/userLogin", { username, password })
-    .then((response) => {
-      dispatch(loginSuccess(response.data));
-    })
-    .catch((error) => {
-      dispatch(loginFailure(error.message));
-    });
-};
+export const login =
+  ({ email, password, walletAddress }) =>
+  (dispatch) => {
+    dispatch(loginRequest());
+    console.log("email", email);
+    return axios
+      .post("http://localhost:8081/login", { email, password, walletAddress })
+      .then((response) => {
+        let user = {
+          userName: response.data.userName,
+          email,
+        };
+        dispatch(loginSuccess(user));
+        window.location = "/buy-now";
+      })
+      .catch((error) => {
+        dispatch(loginFailure(error.message));
+      });
+  };

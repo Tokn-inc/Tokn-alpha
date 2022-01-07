@@ -7,11 +7,11 @@ function ComingSoon() {
     <div className="App">
       <img src={logo} className="logo" alt="logo" />
       <h4 className="coming">Coming soon...</h4>
-      <Link to="/input">
-      <button type="button" name="button" class="btn-primary early-access">
+      {/* <Link to="/metamask"> */}
+      <button type="button" name="button" class="btn-primary early-access" onClick={() => window.location = "/metamask"}>
         Early Access
       </button>
-      </Link>
+      {/* </Link> */}
       <Link to="/login"><p className="login-link">Login</p></Link>
     </div>
   );

@@ -2,8 +2,7 @@
 
 .App {
   font-family: "roboto", sans-serif;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .background {
@@ -14,41 +13,36 @@
 }
 
 .logo {
-  height: 20vh;
-  width: 8vw;
-  position: absolute;
-  top: 28%;
+  height: 120px;
+  width: 120px;
+  margin-top: 35vh;
 }
 
 .coming {
   color: white;
-  position: absolute;
-  top: 52%;
+  margin-top: 2vh;
 }
 
 .early-access{
   background-color: transparent;
-  color: #24A2FD;
+  color: white;
   border-radius: 100px;
-  border-color: #24A2FD !important;
+  border-color: white !important;
   border-style: solid;
   font-weight: 500;
-  position: absolute;
-  top: 70%;
-  left: 44.5%;
+  margin-top: 2vh;
   padding: 0.2rem 2.5rem;
 }
 
 .early-access:hover {
-  background-color: #24A2FD;
-  color: white;
+  background-color: white;
+  color: #24A2FD;
+  border-color: #24A2FD !important;
 }
 
 .login-link {
-  color: #24A2FD;
-  position: absolute;
-  top: 78%;
-  left: 48.5%;
+  color: white;
+  margin-top: 2vh;
 }
 
 /***************************** Input *****************************/
@@ -59,7 +53,7 @@
   background-color: white;
   border-radius: 50px;
   font-weight: 500;
-  margin-top: 6rem;
+  margin-top: 12vh;
   padding: 3rem 5rem;
   box-shadow: 0 5px 10px rgba(66, 63, 63, 0.2);
 }
@@ -121,6 +115,46 @@
   color: white;
 }
 
+/***************************** Metamask *****************************/
+
+.ethAccount {
+  color: white;
+  margin-top: 18rem;
+}
+
+.next {
+  color: white;
+  margin-top: 2rem;
+  font-weight: bold;
+  opacity: 80%;
+}
+
+.connect-wallet {
+  color: white;
+  font-size: 2.5rem;
+  position: relative;
+  top: 25vh;
+}
+
+.metamask-img {
+  height: 2.5rem;
+  width: 2.5rem;
+  position: relative;
+  top: 33vh;
+  left: 3rem;
+  z-index: 1;
+}
+
+.metamask-btn {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-style: none;
+  border-radius: 100px;
+  padding: 1rem 8rem;
+  position: relative;
+  top: 33vh;
+  right: 0.8rem;
+}
+
 /***************************** Create Account *****************************/
 
 .create {
@@ -135,7 +169,8 @@
   font-size: 0.8rem;
   opacity: 85%;
   margin-bottom: 3px;
-  margin-left: 13px;
+  margin-left: 1rem;
+  text-align: left;
 }
 
 input {
@@ -157,13 +192,47 @@ input:focus {
   margin-bottom: 15px;
 }
 
+.pswd-terms {
+  color: crimson;
+  font-size: 0.6rem;
+  font-weight: normal;
+  line-height: 0;
+  margin-left: 1rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  text-align: left;
+}
+
+.valid-email-pass{
+  color: crimson;
+  font-size: 0.6rem;
+  font-weight: normal;
+  text-align: left;
+}
+
+.pswd-red {
+  color: crimson;
+}
+
+.pswd-green {
+  color: green;
+}
+
+.required {
+  font-size: 0.6rem;
+  font-weight: normal;
+  position: relative;
+  top: 3rem;
+  left: 7.2rem;
+}
+
 .metamask-div {
   display: flex;
   justify-content: center;
   background-color: rgba(0, 0, 0, 7%);
   border-radius: 10px;
   width: 50%;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-left: 20%;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -183,7 +252,80 @@ input:focus {
   margin-top: 5px;
 }
 
+.metamask2 {
+  margin-left: 32%;
+  height: 20px;
+  width: 20px;
+}
+
+.tick {
+  margin-left: 1%;
+  height: 10px;
+  width: 10px;
+}
+
+.connected {
+  display: inline-block;
+  font-size: 0.6rem;
+  margin-left: 1%;
+}
+
+.confirm {
+  background-color: #24A2FD;
+  border-radius: 100px;
+  border-style: none;
+  font-size: 0.8rem;
+  padding: 5px 20px;
+}
+
+/***************************** Login *****************************/
+
+.wcLogin {
+  margin-top: 20vh !important;
+}
+
+.login-btn {
+  position: relative;
+  left: 0.9rem;
+}
+
 /***************************** Buy Now *****************************/
+
+.wallet-address {
+  position: absolute;
+  top: 15px;
+  left: 23px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.balance {
+  position: absolute;
+  top: 35px;
+  left: 23px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#address, #bal {
+  font-style: italic;
+  font-weight: 500;
+  margin-left: 5px;
+  opacity: 80%;
+}
+
+#updating {
+  color: white;
+  opacity: 80%;
+  display: flex;
+  font-style: italic;
+  font-weight: 500;
+  justify-content: center;
+  position: relative;
+  top: 5rem;
+}
 
 .white-container2 {
   color: gray;
@@ -192,7 +334,7 @@ input:focus {
   border-radius: 50px;
   box-shadow: 0 5px 10px rgba(66, 63, 63, 0.2);
   font-weight: 500;
-  margin-top: 6rem;
+  margin-top: 13vh;
   padding: 3rem 5rem;
 }
 
@@ -213,6 +355,19 @@ input:focus {
   right: 50px;
 }
 
+.tooltip1{
+  display: none;
+  color: black;
+  background-color: rgba(0, 0, 0, 20%);
+  font-size: 0.6rem;
+  margin-top: 0;
+  position: relative;
+  bottom: 3rem;
+  right: 1rem;
+  padding: 0.5rem 0.5rem;
+  width: 12.5rem;
+}
+
 .song-img {
   display: inline-block;
   height: 15rem;
@@ -220,23 +375,24 @@ input:focus {
   background-color: #FF5DA2;
   border-radius: 25px;
   position: relative;
-  bottom: 4rem;
+  bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .song-info {
   display: inline-block;
-  position: absolute;
-  bottom: 12rem;
-  left: 30rem;
+  margin-left: -15rem;
+  position: relative;
+  top: 2.2rem;
 }
 
 .song-info h1 {
   letter-spacing: -0.7px;
-  margin-bottom: -7px;
 }
 
 .song-info h5 {
-  margin-top: 0;
+  position: relative;
+  bottom: 1rem;
 }
 
 .profile-pic {
@@ -246,9 +402,10 @@ input:focus {
   width: 30px;
   border-radius: 100%;
   box-shadow: 1px 1px 5px rgba(66, 63, 63, 0.4);
-  margin-right: 8px;
   position: relative;
   top: 7px;
+  right: 27px;
+  margin-right: -18px;
 }
 
 .white-container-inner {
@@ -258,7 +415,7 @@ input:focus {
   border-radius: 25px;
   box-shadow: 0 5px 10px rgba(66, 63, 63, 0.35);
   font-weight: 500;
-  margin-left: 5rem;
+  margin-left: 9rem;
   margin-bottom: 2rem;
   padding: 2rem 1rem 1rem;
   text-align: center;
@@ -331,6 +488,45 @@ hr {
   opacity: 40%;
 }
 
+@media (max-width: 850px) {
+
+  .white-container2{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 26rem;
+    margin-bottom: 6rem;
+  }
+
+  .white-container-inner {
+    margin-left: 0;
+    position: relative;
+    top: 24rem;
+    right: 5rem;
+  }
+
+  .info {
+    position: relative;
+    left: 0.5rem;
+  }
+
+  .song-img, .song-info {
+    position: relative;
+    left: 6.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .white-container2{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .info {
+    position: relative;
+    left: 2rem;
+  }
+}
+
 /***************************** Congrats *****************************/
 
 .wci2 {
@@ -361,12 +557,23 @@ hr {
 .twitter, .telegram, .instagram {
   height: 20px;
   width: 20px;
-  margin-right: 10px;
-  margin-bottom: 30px;
-  position: relative;
-  left: 10px;
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+}
+
+.twitter {
+  right: 6rem;
+}
+
+.telegram {
+  right: 4rem;
 }
 
 .song-img2 {
-  margin-bottom: -3.4rem;
+  bottom: 3.3rem;
+}
+
+.song-info2 {
+  top: 1.3rem;
 }

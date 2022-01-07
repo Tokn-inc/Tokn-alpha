@@ -18,7 +18,7 @@ contract ToknFactory is ERC1155{
 
     // totalSupplies for every token
     mapping(uint => uint) public totalSupplies;
-
+    mapping(uint => uint) public toknsAvailable;
     // maps token id to metadata uri
     mapping(uint => string) public toknIdToURI;
 
@@ -56,11 +56,13 @@ contract ToknFactory is ERC1155{
     function mintInvestorTokns(uint _amount, uint _toknId) public isToknOwner(_toknId, msg.sender){
         _mint(msg.sender, _toknId, _amount, bytes(toknIdToURI[_toknId]));
         totalSupplies[_toknId] += _amount;
+        toknsAvailable[_toknId] += _amount;
     }
     
     function burnInvestorTokns(uint _amount, uint _toknId) public isToknOwner(_toknId, msg.sender){
         _burn(msg.sender, _toknId, _amount);
         totalSupplies[_toknId] -= _amount;
+        toknsAvailable[_toknId] -= _amount;
     }    
     
     function returnAddressesForTokn(uint _id) public view returns(address[] memory){

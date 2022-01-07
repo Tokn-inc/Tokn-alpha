@@ -2,16 +2,21 @@ const {
   SIGNUP_REQUEST,
   SIGNUP_FAILURE,
   SIGNUP_SUCCESS,
-} = require("./actionTypes");
+  LOGIN_REQUEST,
+  LOGIN_FAILURE,
+  LOGIN_SUCCESS,
+} = require("./userActions");
 
-const { initialState } = require("./initialState");
-
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (
+  state = { loading: false, error: "", user: null, loggedIn: false },
+  action
+) => {
   switch (action.type) {
     case SIGNUP_REQUEST:
       return {
         ...state,
         loading: true,
+        loggedIn: false,
         error: "",
       };
     case SIGNUP_FAILURE:
@@ -24,6 +29,27 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        loggedIn: true,
+        user: action.payload,
+      };
+    case LOGIN_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        loggedIn: false,
+        error: "",
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loggedIn: true,
         user: action.payload,
       };
     default:
