@@ -9,6 +9,11 @@ import {
   SIGNUP_SUCCESS,
 } from "./userActions";
 
+let axiosConfig = {
+  withCredentials: true,
+  baseURL: "http://localhost:8081/",
+};
+
 export const signupRequest = () => {
   return {
     type: SIGNUP_REQUEST,
@@ -70,28 +75,62 @@ export const signup =
             window.location = "/buy-now";
           })
           .catch((error) => {
-            dispatch(signupFailure(error.message));
-            alert(error.message);
+            dispatch(signupFailure(error.response.data.message));
+            alert(error.response.data.message);
           })
       : dispatch(signupFailure("ERROR: Both passwords don't match."));
   };
 
 export const login =
   ({ email, password, walletAddress }) =>
-  (dispatch) => {
+  async (dispatch) => {
     dispatch(loginRequest());
     console.log("email", email);
-    return axios
-      .post("http://localhost:8081/login", { email, password, walletAddress })
-      .then((response) => {
-        let user = {
-          userName: response.data.userName,
-          email,
-        };
-        dispatch(loginSuccess(user));
-        window.location = "/buy-now";
-      })
-      .catch((error) => {
-        dispatch(loginFailure(error.message));
-      });
+    try {
+      await axios
+        .post(
+          "http://localhost:8081/login",
+          { email, password, walletAddress },
+          axiosConfig
+        )
+        .then((response) => {
+          let user = {
+            userName: response.data.userName,
+            email,
+          };
+          console.log("response", response);
+          dispatch(loginSuccess(user));
+          // document.cookie = response.headers
+
+          window.location = "/buy-now";
+        })
+        .catch((error) => {
+          dispatch(loginFailure(error.response.data.message));
+          console.log(error.response.data);
+          alert(error.response.data.message);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+export const loginWithJWT = (token, address) => async (dispatch) => {
+  axios
+    .post("http://localhost:8081/cookie-check", {
+      jwt: token,
+      walletAddress: address,
+    })
+    .then((response) => {
+      dispatch(
+        loginSuccess({
+          userName: response.data.username,
+          email: response.data.email,
+        })
+      );
+      window.location = "/buy-now";
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err.response.data.message);
+    });
+};

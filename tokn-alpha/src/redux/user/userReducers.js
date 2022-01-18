@@ -8,7 +8,13 @@ const {
 } = require("./userActions");
 
 export const userReducer = (
-  state = { loading: false, error: "", user: null, loggedIn: false },
+  state = {
+    loading: false,
+    error: "",
+    user: null,
+    loggedIn: false,
+    accessToken: null,
+  },
   action
 ) => {
   switch (action.type) {

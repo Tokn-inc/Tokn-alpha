@@ -5,6 +5,8 @@ import '../App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { updateBalance } from '../redux';
+import songPoster from './song-poster.jpg';
+import artistImg from './NC-img.png';
 
 function Congrats() {
   const {address, balance} = useSelector(state => state.wallet)
@@ -26,11 +28,15 @@ function Congrats() {
       <p className="wallet-address">Active Wallet: <span id="address">{address}</span></p>
       <p className="balance">Tokns Booked: <span id="bal">{balance}</span></p>
         <div className="white-container2">
-            <span className="info">i</span>
-            <span className="song-img song-img2"></span>
+            <span className="info">
+              i 
+            </span>
+            <span className="song-img song-img2">
+            <img src={songPoster} alt='song-poster' className="song-poster" />
+            </span>
             <span className="song-info song-info2">
-                <h1>Song Title</h1>
-                <h5><span className="profile-pic"></span>Artist Name</h5>
+                <h1>On My Way</h1>
+                <h5><img src={artistImg} alt='NC' className="artist-img" />NC</h5>
             </span> 
             <div className="white-container-inner">
                 <h6><img src={congrats} className="congrats" alt="congrats" />Congrats!<img src={congrats} className="congrats" alt="congrats" /></h6>

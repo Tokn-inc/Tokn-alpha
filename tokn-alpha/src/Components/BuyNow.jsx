@@ -5,6 +5,8 @@ import '../App.css';
 import contract from "../ToknContract";
 import usdc from "../usdcContract";
 import { updateBalance } from "../redux";
+import songPoster from './song-poster.jpg';
+import artistImg from './NC-img.png';
 
 function BuyNow() {
 
@@ -32,11 +34,11 @@ function BuyNow() {
   
 
   window.onload = async (e) => {
-    if(address){
-    dispatch(updateBalance(address, 1))
-    }else if (!loggedIn){
+    if (!loggedIn){
       alert("User not loggedIn.")
       window.location = "/create-account"
+    }else if(address){
+    dispatch(updateBalance(address, 1))
     }else{
       alert("Connect wallet first.");
       window.location = "/metamask"
@@ -64,7 +66,10 @@ function BuyNow() {
 
   const buyTokns = async (event) => {
     event.preventDefault()
-    if(errmess){
+    if(!qty){
+      alert("Enter a quantity!");
+    }else{
+      if(errmess){
       alert(errmess)
     }else{
       try{
@@ -80,22 +85,44 @@ function BuyNow() {
       console.log("Error in if");
       alert(error)
     }
-    window.location = "/congrats"
+    
     }catch(error){
       console.log("Error in catch");
       alert(error)
     }
     }
     
+    }
+    
 
   }
 
+  const redeemTokens = async (event) => {
+    event.preventDefault();
+    try{
+      await contract.methods.redeemBookedTokens(1).send({from: address});
+      dispatch(updateBalance(address, 1))
+      window.location = "/congrats"
+    }catch(err){
+      console.log(err);
+      alert("Something went wrong!")
+    }
+  }
+
   function tooltip() {
-    document.querySelector('.tooltip1').style.display = 'flex';
+    document.querySelector('.tooltip1').style.display = 'inline-block';
   }
 
   function tooltipNone() {
     document.querySelector('.tooltip1').style.display = 'none';
+  }
+
+  function popup() {
+    document.querySelector('.popup-wrapper').style.display = 'flex';
+  }
+
+  function popout() {
+    document.querySelector('.popup-wrapper').style.display = 'none';
   }
 
   return (
@@ -103,12 +130,17 @@ function BuyNow() {
         <p className="wallet-address">Active Wallet: <span id="address">{address}</span></p>
         <p className="balance">Tokns Booked: <span id="bal">{balance}</span></p>
         <div className="white-container2">
-            <span className="info" onMouseOver={tooltip} onMouseOut={tooltipNone}>i</span>
+            <span className="info" onMouseOver={tooltip} onMouseOut={tooltipNone}>
+              i <span className="tooltip1">Book the first ever FSTs by preordering.
+               When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
+            </span>
             <span className="tooltip1">Book the first ever FSTs by preordering.<br/> When beta goes live, tokn-holders will <br/>receive their FSTs and begin earning royalties.</span>
-            <span className="song-img"></span>
+            <span className="song-img">
+              <img src={songPoster} alt='song-poster' className="song-poster" />
+            </span>
             <span className="song-info">
-                <h1>Song Title</h1>
-                <h5><span className="profile-pic"></span>Artist Name</h5>
+                <h1>On My Own</h1>
+                <h5><img src={artistImg} alt='NC' className="artist-img" />NC</h5>
             </span>   
             <div className="white-container-inner">
                 <p className="qty">Quantity</p>
@@ -133,9 +165,26 @@ function BuyNow() {
                 <br />
                 <br />
                 {/* <Link to="/congrats"> */}
-                <button type="button" name="button" class="btn-primary buy-now-btn" id="buy-now" onClick={buyTokns}>
+                <button type="button" name="button" className="btn-primary buy-now-btn" id="buy-now" onClick={popup}>
                     Book Now
                 </button>
+                <div className="popup-wrapper">
+                  <div className="popup">
+                    <div className="popup-close" onClick={popout}>+</div>
+                    <div className="popup-content">
+                      <button type="button" name="button" class="btn-primary buy-now-btn popup-btn pb1" id="buy-now" onClick={buyTokns}>
+                        Pay now with USDC
+                      </button>
+                      <br />
+                      <br />
+                      
+                      <button type="button" name="button" class="btn-primary buy-now-btn popup-btn" id="buy-now" onClick={redeemTokens}>
+                        Have already paid
+                      </button>
+                    
+                    </div>
+                  </div>
+                </div>
                 {/* </Link> */}
             </div>          
         </div>

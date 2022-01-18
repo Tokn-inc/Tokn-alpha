@@ -12,7 +12,7 @@ function ComingSoon() {
         Early Access
       </button>
       {/* </Link> */}
-      <Link to="/login"><p className="login-link">Login</p></Link>
+      <Link to="/metamask-login"><p className="login-link">Login</p></Link>
     </div>
   );
 }

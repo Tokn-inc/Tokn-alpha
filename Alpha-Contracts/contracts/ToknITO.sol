@@ -27,6 +27,7 @@ contract ToknITO{
     mapping(uint => ITOConfig) public toknITOs;
     mapping(address => uint) public artistTracker;
     mapping(address => uint) public userTracker;
+    mapping(address => uint) public hasPaid;
     
     address[] public artistList;
     address[] public userList;
@@ -39,6 +40,17 @@ contract ToknITO{
         treasury = payable(msg.sender);
     }
     
+    function setUserHasPaid(address _user, uint _amount) public {
+        require(msg.sender== toknFactory.deployer(), "User not authorized");
+        hasPaid[_user] = _amount;
+    }
+
+    function setUsersHavePaid(address[] memory _users, uint[] memory _amounts) public {
+        require(msg.sender== toknFactory.deployer(), "User not authorized");
+        for(uint i = 0; i<_users.length; ++i){
+            setUserHasPaid(_user[i], _amounts[i]);
+        }
+    }
     function setTreasuryPercentage(uint _pc) public {
         require(msg.sender == treasury, "Caller not authorized");
         treasuryPercentage = _pc;
@@ -117,6 +129,24 @@ contract ToknITO{
         toknITOs[_id].toknsAvailable -= _qty;
         toknITOs[_id].investors.push(payable(msg.sender));
         bookedTokns[_id][msg.sender] += _qty;
+    }
+
+    function redeemBookedTokens(uint _id) public {
+        require(_qty <= toknITOs[_id].toknsAvailable && toknITOs[_id].itoState == State.Running);
+        require(hasPaid[msg.sender] != 0, "User has not paid.");
+        uint toknPrice = toknITOs[_id].price;
+        uint _qty = hasPaid[msg.sender]/toknPrice;
+        toknITOs[_id].toknsAvailable -= _qty;
+        toknITOs[_id].investors.push(payable(msg.sender));
+        bookedTokns[_id][msg.sender] += _qty;
+        hasPaid[msg.sender] = 0;
+    }
+
+    function bookTokensForUser(address _user, uint _id, uint _amount) public {
+        require(msg.sender == toknFactory.deployer());
+        uint toknPrice = toknITOs[_id].price;
+        uint tokens = _amount/toknPrice;
+        bookedTokns[_user] = tokens;
     }
     
     function allocateFixedPrice(uint _id) public{

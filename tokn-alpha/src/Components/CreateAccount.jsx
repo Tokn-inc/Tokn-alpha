@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import metamask from './metamask.png';
 import tick from './tick.png';
-import { signup } from "../redux";
+import { signup, loginWithJWT } from "../redux";
 import '../App.css';
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -29,13 +29,34 @@ function CreateAccount() {
   const dispatch = useDispatch();
   const address = useSelector((state) => state.wallet.address)
   const {error, loggedIn} = useSelector((state) => state.user)
-  
+  function readCookie(cname) {
+    var name = cname + "=";
+    var decoded_cookie = decodeURIComponent(document.cookie);
+    var carr = decoded_cookie.split(';');
+    for(var i=0; i<carr.length;i++){
+    var c = carr[i];
+    while(c.charAt(0)===' '){
+        c=c.substring(1);
+    }
+    if(c.indexOf(name) === 0) {
+        return c.substring(name.length, c.length);
+    }
+     }
+     return "";
+}
 
  useEffect(() => {
-    if(loggedIn){
+   if(loggedIn){
       
       window.location = "/buy-now"
     }
+   let token = readCookie("jwt");
+    console.log(document.cookie);
+    if(token){
+      console.log("true");
+      dispatch(loginWithJWT(token, address))
+    }
+    
   }, [])
 
   const validateEmail = (email) => {

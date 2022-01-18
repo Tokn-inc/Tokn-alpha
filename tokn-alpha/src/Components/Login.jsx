@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import metamask from './metamask.png';
 import '../App.css';
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux";
+import { login, loginWithJWT } from "../redux";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Login() {
   const address = useSelector((state) => state.wallet.address)
@@ -11,13 +12,37 @@ function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const dispatch = useDispatch()
-
+  
+function readCookie(cname) {
+    var name = cname + "=";
+    var decoded_cookie = decodeURIComponent(document.cookie);
+    var carr = decoded_cookie.split(';');
+    for(var i=0; i<carr.length;i++){
+    var c = carr[i];
+    while(c.charAt(0)===' '){
+        c=c.substring(1);
+    }
+    if(c.indexOf(name) === 0) {
+        return c.substring(name.length, c.length);
+    }
+     }
+     return "";
+}
    useEffect(() => {
-    if(loggedIn){
+     if(loggedIn){
       
       window.location = "/buy-now"
     }
+     let token = readCookie("jwt");
+    console.log(document.cookie);
+    if(token){
+      console.log("true");
+      dispatch(loginWithJWT(token, address))
+    }
+    
   }, [])
+
+ 
   const userLogin = async (event) => {
     event.preventDefault()
     if(!address){
