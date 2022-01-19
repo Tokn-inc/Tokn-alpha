@@ -63,12 +63,16 @@ export const signup =
 
     return confirm_password === password
       ? axios
-          .post("http://localhost:8081/newUser", {
-            username,
-            password,
-            email,
-            walletAddress,
-          })
+          .post(
+            "http://localhost:8081/newUser",
+            {
+              username,
+              password,
+              email,
+              walletAddress,
+            },
+            axiosConfig
+          )
           .then((response) => {
             console.log(response);
             dispatch(signupSuccess({ username, email }));
@@ -82,21 +86,21 @@ export const signup =
   };
 
 export const login =
-  ({ email, password, walletAddress }) =>
+  ({ detail, password, walletAddress }) =>
   async (dispatch) => {
     dispatch(loginRequest());
-    console.log("email", email);
+    // console.log("email", email);
     try {
       await axios
         .post(
           "http://localhost:8081/login",
-          { email, password, walletAddress },
+          { detail, password, walletAddress },
           axiosConfig
         )
         .then((response) => {
           let user = {
-            userName: response.data.userName,
-            email,
+            username: response.data.username,
+            email: response.data.email,
           };
           console.log("response", response);
           dispatch(loginSuccess(user));
@@ -114,12 +118,9 @@ export const login =
     }
   };
 
-export const loginWithJWT = (token, address) => async (dispatch) => {
+export const loginWithJWT = () => async (dispatch) => {
   axios
-    .post("http://localhost:8081/cookie-check", {
-      jwt: token,
-      walletAddress: address,
-    })
+    .get("http://localhost:8081/cookie-check", axiosConfig)
     .then((response) => {
       dispatch(
         loginSuccess({

@@ -48,7 +48,7 @@ contract ToknITO{
     function setUsersHavePaid(address[] memory _users, uint[] memory _amounts) public {
         require(msg.sender== toknFactory.deployer(), "User not authorized");
         for(uint i = 0; i<_users.length; ++i){
-            setUserHasPaid(_user[i], _amounts[i]);
+            setUserHasPaid(_users[i], _amounts[i]);
         }
     }
     function setTreasuryPercentage(uint _pc) public {
@@ -132,10 +132,11 @@ contract ToknITO{
     }
 
     function redeemBookedTokens(uint _id) public {
-        require(_qty <= toknITOs[_id].toknsAvailable && toknITOs[_id].itoState == State.Running);
+        require(toknITOs[_id].itoState == State.Running);
         require(hasPaid[msg.sender] != 0, "User has not paid.");
         uint toknPrice = toknITOs[_id].price;
         uint _qty = hasPaid[msg.sender]/toknPrice;
+        require(_qty <= toknITOs[_id].toknsAvailable );
         toknITOs[_id].toknsAvailable -= _qty;
         toknITOs[_id].investors.push(payable(msg.sender));
         bookedTokns[_id][msg.sender] += _qty;
@@ -150,7 +151,7 @@ contract ToknITO{
     }
     
     function allocateFixedPrice(uint _id) public{
-        stopITO(_id);
+        // stopITO(_id);
         
         require(toknFactory.toknIdToArtist(_id) == msg.sender);
         require(toknITOs[_id].itoState == State.Ended);

@@ -59,6 +59,7 @@ contract ToknFactory is ERC1155{
         toknsAvailable[_toknId] += _amount;
     }
     
+    
     function burnInvestorTokns(uint _amount, uint _toknId) public isToknOwner(_toknId, msg.sender){
         _burn(msg.sender, _toknId, _amount);
         totalSupplies[_toknId] -= _amount;
@@ -81,6 +82,18 @@ contract ToknFactory is ERC1155{
             "ERC1155: caller is not owner nor approved"
         );
         _safeTransferFrom(from, to, id, amount, data);
+        if(balanceOf(from, id) == 0){
+            for(uint i = 0; i < addressTracker[id].length; ++i){
+                if(addressTracker[id][i] == from){
+                    delete addressTracker[id][i];
+                }
+            }
+        }
+        for(uint i = 0; i < addressTracker[id].length; ++i){
+            if(addressTracker[id][i] == to){
+                return;
+            }
+        }
         addressTracker[id].push(to);
     }
 
