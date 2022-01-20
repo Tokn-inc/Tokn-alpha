@@ -80,8 +80,36 @@ export const connectWallet = (web3) => (dispatch) => {
   console.log("connecting wallet");
   return web3.eth
     .requestAccounts()
-    .then((res) => {
+    .then(async (res) => {
+      await window.ethereum.enable();
       console.log(res[0]);
+      try {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: "0x4" }],
+        });
+      } catch (switchError) {
+        // This error code indicates that the chain has not been added to MetaMask.
+        if (switchError.code === 4902) {
+          try {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [
+                {
+                  chainId: "0x4",
+                  chainName: "Rinkeby Test Network",
+                  rpcUrls: [
+                    "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+                  ] /* ... */,
+                },
+              ],
+            });
+          } catch (addError) {
+            alert("Please switch to rinkeby network.");
+          }
+        }
+        // handle other "switch" errors
+      }
       axios
         .post("http://localhost:8081/check-whitelist", {
           address: res[0],
@@ -100,13 +128,9 @@ export const connectWallet = (web3) => (dispatch) => {
     })
     .catch((error) => {
       console.log(error.message);
-      alert(
-        "Error: Please make sure you logged in with correct wallet address."
-      );
+      alert("Error: Please ensure metamask is installed.");
       dispatch(
-        connectWalletFailure(
-          "Error: Please make sure you logged in with correct wallet address."
-        )
+        connectWalletFailure("Error: Please ensure metamask is installed.")
       );
     });
 };

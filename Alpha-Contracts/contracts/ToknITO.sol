@@ -147,7 +147,7 @@ contract ToknITO{
         require(msg.sender == toknFactory.deployer());
         uint toknPrice = toknITOs[_id].price;
         uint tokens = _amount/toknPrice;
-        bookedTokns[_user] = tokens;
+        bookedTokns[_id][_user] += tokens;
     }
     
     function allocateFixedPrice(uint _id) public{
