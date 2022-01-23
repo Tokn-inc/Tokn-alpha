@@ -32,13 +32,17 @@ function CreateAccount() {
   
 
  useEffect(() => {
-   if(loggedIn){
+  if(!address){
+    alert("Connect wallet first!")
+    window.location = '/metamask-login'
+  } 
+  if(loggedIn){
 
       window.location = "/buy-now"
 
     }
    
-      dispatch(loginWithJWT())
+      dispatch(loginWithJWT(address))
     
   }, [])
 
@@ -66,7 +70,7 @@ function CreateAccount() {
   const handlePasswordChange = (e) => {
     setTerms(true);
     
-    if(e.target.value.length >= 6 && e.target.value.length <= 12) {
+    if(e.target.value.length >= 6 ) {
       setTerm1(true);
     }else{
       setTerm1(false)
@@ -163,8 +167,8 @@ function CreateAccount() {
             <p className="login-label">Password</p>
             <input className="pwd-input" type="password" name="" placeholder="Password" onChange={handlePasswordChange}/>
             {terms && <div className="pswd-terms">
-              {!term1 && <p className="pswd-red">Must contain 6-12 characters</p>}
-              {term1 && <p className="pswd-green">Must contain 6-12 characters</p>}
+              {!term1 && <p className="pswd-red">Must contain at least 6 characters</p>}
+              {term1 && <p className="pswd-green">Must contain at least 6 characters</p>}
               {!term2 && <p className="pswd-red">Must contain an uppercase alphabet</p>}
               {term2 && <p className="pswd-green">Must contain an uppercase alphabet</p>}
               {!term3 && <p className="pswd-red">Must contain a lowercase alphabet</p>}
@@ -180,7 +184,7 @@ function CreateAccount() {
             <button type="button" name="button" class="btn-primary confirm" onClick={register}>
                 Confirm
             </button>
-           
+           <Link to='/login'><p className="sign-in">Already have an account? Sign in</p></Link>
         </div>
     </div>
     

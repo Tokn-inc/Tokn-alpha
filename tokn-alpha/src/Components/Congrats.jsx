@@ -23,21 +23,31 @@ function Congrats() {
     dispatch(updateBalance(address, 1))
   }, [])
   
+  function tooltip() {
+    document.querySelector('.tooltip1').style.display = 'inline-block';
+  }
+
+  function tooltipNone() {
+    document.querySelector('.tooltip1').style.display = 'none';
+  }
   return (
-    <div className="App">
-      <p className="wallet-address">Active Wallet: <span id="address">{address}</span></p>
+    <div className="buy-now-wrap">
+    <div className="wallet-wrap">
+      <p className="wallet-address">Active Wallet: <span id="address">{address.substring(0,5) + "..." + address.substring(13,18)}</span></p>
       <p className="balance">Tokns Booked: <span id="bal">{balance}</span></p>
+      </div>
         <div className="white-container2">
-            <span className="info">
+            <span className="info" onMouseOver={tooltip} onMouseOut={tooltipNone}>
               i 
             </span>
-            <span className="song-img song-img2">
+            <span className="tooltip1">Book the first ever FSTs by preordering. When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
+          <div className="left">
             <img src={songPoster} alt='song-poster' className="song-poster" />
-            </span>
             <span className="song-info song-info2">
-                <h1>On My Way</h1>
+                <h1>On My Own</h1>
                 <h5><img src={artistImg} alt='NC' className="artist-img" />NC</h5>
             </span> 
+          </div>
             <div className="white-container-inner">
                 <h6><img src={congrats} className="congrats" alt="congrats" />Congrats!<img src={congrats} className="congrats" alt="congrats" /></h6>
                 <p className="large-text">You've booked the first ever FST!!! <br />

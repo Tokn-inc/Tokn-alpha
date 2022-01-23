@@ -27,7 +27,7 @@ contract ToknITO{
     mapping(uint => ITOConfig) public toknITOs;
     mapping(address => uint) public artistTracker;
     mapping(address => uint) public userTracker;
-    mapping(address => uint) public hasPaid;
+    // mapping(address => uint) public hasPaid;
     
     address[] public artistList;
     address[] public userList;
@@ -40,17 +40,17 @@ contract ToknITO{
         treasury = payable(msg.sender);
     }
     
-    function setUserHasPaid(address _user, uint _amount) public {
-        require(msg.sender== toknFactory.deployer(), "User not authorized");
-        hasPaid[_user] = _amount;
-    }
+    // function setUserHasPaid(address _user, uint _amount) public {
+    //     require(msg.sender== toknFactory.deployer(), "User not authorized");
+    //     hasPaid[_user] = _amount;
+    // }
 
-    function setUsersHavePaid(address[] memory _users, uint[] memory _amounts) public {
-        require(msg.sender== toknFactory.deployer(), "User not authorized");
-        for(uint i = 0; i<_users.length; ++i){
-            setUserHasPaid(_users[i], _amounts[i]);
-        }
-    }
+    // function setUsersHavePaid(address[] memory _users, uint[] memory _amounts) public {
+    //     require(msg.sender== toknFactory.deployer(), "User not authorized");
+    //     for(uint i = 0; i<_users.length; ++i){
+    //         setUserHasPaid(_users[i], _amounts[i]);
+    //     }
+    // }
     function setTreasuryPercentage(uint _pc) public {
         require(msg.sender == treasury, "Caller not authorized");
         treasuryPercentage = _pc;
@@ -125,29 +125,46 @@ contract ToknITO{
         
         require(_qty <= toknITOs[_id].toknsAvailable && toknITOs[_id].itoState == State.Running);
         uint usdcAmount = _qty * toknITOs[_id].price;
-        usdc.transferFrom(msg.sender, address(this), usdcAmount);
+        uint platform_fee = usdcAmount*treasuryPercentage/uint(100);
+        usdc.transferFrom(msg.sender, address(this), usdcAmount+platform_fee);
         toknITOs[_id].toknsAvailable -= _qty;
         toknITOs[_id].investors.push(payable(msg.sender));
         bookedTokns[_id][msg.sender] += _qty;
     }
 
-    function redeemBookedTokens(uint _id) public {
-        require(toknITOs[_id].itoState == State.Running);
-        require(hasPaid[msg.sender] != 0, "User has not paid.");
-        uint toknPrice = toknITOs[_id].price;
-        uint _qty = hasPaid[msg.sender]/toknPrice;
-        require(_qty <= toknITOs[_id].toknsAvailable );
-        toknITOs[_id].toknsAvailable -= _qty;
-        toknITOs[_id].investors.push(payable(msg.sender));
-        bookedTokns[_id][msg.sender] += _qty;
-        hasPaid[msg.sender] = 0;
-    }
+    // function redeemBookedTokens(uint _id) public {
+    //     require(toknITOs[_id].itoState == State.Running);
+    //     require(hasPaid[msg.sender] != 0, "User has not paid.");
+    //     uint toknPrice = toknITOs[_id].price;
+    //     uint _qty = hasPaid[msg.sender]/toknPrice;
+    //     require(_qty <= toknITOs[_id].toknsAvailable );
+    //     toknITOs[_id].toknsAvailable -= _qty;
+    //     toknITOs[_id].investors.push(payable(msg.sender));
+    //     bookedTokns[_id][msg.sender] += _qty;
+    //     hasPaid[msg.sender] = 0;
+    // }
 
     function bookTokensForUser(address _user, uint _id, uint _amount) public {
         require(msg.sender == toknFactory.deployer());
         uint toknPrice = toknITOs[_id].price;
-        uint tokens = _amount/toknPrice;
+        uint cost = _amount*100/uint(100 + treasuryPercentage);
+        uint tokens = cost*10**6/toknPrice;
         bookedTokns[_id][_user] += tokens;
+        usdc.transferFrom(msg.sender, address(this), _amount*10**6);
+    }
+
+    function bookTokensForUsers(address[] calldata _users, uint _id, uint[] calldata _amounts) public {
+        require(msg.sender == toknFactory.deployer());
+        uint amount = 0;
+        uint toknPrice = toknITOs[_id].price;
+        for(uint i = 0; i < _users.length; ++i){
+            amount += _amounts[i]*10**6;
+            uint cost = _amounts[i]*100/uint(100 + treasuryPercentage);
+            uint tokens = cost*10**6/toknPrice;
+            bookedTokns[_id][_users[i]] += tokens;
+        }
+        usdc.transferFrom(msg.sender, address(this), amount);
+
     }
     
     function allocateFixedPrice(uint _id) public{
@@ -159,10 +176,10 @@ contract ToknITO{
         for(uint i = 0; i < toknInvestors.length; i++) {
             toknFactory.safeTransferFrom(msg.sender, toknInvestors[i], _id, bookedTokns[_id][toknInvestors[i]], "");
             uint amount = toknITOs[_id].price * bookedTokns[_id][toknInvestors[i]];
-        uint treasury_amount = amount*treasuryPercentage/uint(100);
-        uint artistAmount = amount - treasury_amount;
-        usdc.transfer(treasury, treasury_amount);
-          usdc.transfer(msg.sender, artistAmount);
+            uint treasury_amount = amount*treasuryPercentage/uint(100);
+            // uint artistAmount = amount - treasury_amount;
+            usdc.transfer(treasury, treasury_amount);
+            usdc.transfer(msg.sender, amount);
             airdropTracker(_id, toknInvestors[i], amount);
         }
     }

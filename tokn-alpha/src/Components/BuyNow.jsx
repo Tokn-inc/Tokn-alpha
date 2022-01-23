@@ -16,11 +16,16 @@ function BuyNow() {
   const [toknsAvailable, setToknsAvailable] = useState(0)
   const [price, setPrice] = useState(0)
   const [errmess,setErrmess] = useState(null)
-  const {address, error, balance} = useSelector((state) => state.wallet)
+  const {address, error, balance, loading} = useSelector((state) => state.wallet)
   const {loggedIn} = useSelector((state) => state.user)
   const dispatch = useDispatch()
+  const [processing, setProcessing] = useState(false)
 
   useEffect(() => {
+    if (!loggedIn){
+      alert("User not loggedIn.")
+      window.location = "/create-account"
+    }
      async function getToknDetails(){
       const toknITO = await contract.methods.getITO('1').call();
       const tokns = toknITO.toknsAvailable;
@@ -74,12 +79,17 @@ function BuyNow() {
     }else{
       try{
       console.log("processing...");
-      
+      setProcessing(true)
       await usdc.methods.approve(contract._address, qty*price).send({from: address})
       console.log("approved");
     await contract.methods.investFixedPrice(1, qty).send({from: address})
+    
     console.log("Tokens bought: ", qty);
     dispatch(updateBalance(address, 1))
+    window.location = "/congrats"
+    setTimeout(() => {
+      setProcessing(false)
+    }, 5000)
     
     if(error){
       console.log("Error in if");
@@ -97,17 +107,7 @@ function BuyNow() {
 
   }
 
-  const redeemTokens = async (event) => {
-    event.preventDefault();
-    try{
-      await contract.methods.redeemBookedTokens(1).send({from: address});
-      dispatch(updateBalance(address, 1))
-      window.location = "/congrats"
-    }catch(err){
-      console.log(err);
-      alert("Something went wrong!")
-    }
-  }
+
 
   function tooltip() {
     document.querySelector('.tooltip1').style.display = 'inline-block';
@@ -117,31 +117,27 @@ function BuyNow() {
     document.querySelector('.tooltip1').style.display = 'none';
   }
 
-  function popup() {
-    document.querySelector('.popup-wrapper').style.display = 'flex';
-  }
-
-  function popout() {
-    document.querySelector('.popup-wrapper').style.display = 'none';
-  }
+ 
 
   return (
-    <div className="App">
-        <p className="wallet-address">Active Wallet: <span id="address">{address}</span></p>
+    <div className="buy-now-wrap">
+      <div className="wallet-wrap">
+        <p className="wallet-address">Active Wallet: <span id="address">{address.substring(0,5) + "..." + address.substring(13,18)}</span></p>
         <p className="balance">Tokns Booked: <span id="bal">{balance}</span></p>
+      </div>
+        
         <div className="white-container2">
             <span className="info" onMouseOver={tooltip} onMouseOut={tooltipNone}>
-              i <span className="tooltip1">Book the first ever FSTs by preordering.
-               When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
+              i 
             </span>
-            <span className="tooltip1">Book the first ever FSTs by preordering.<br/> When beta goes live, tokn-holders will <br/>receive their FSTs and begin earning royalties.</span>
-            <span className="song-img">
-              <img src={songPoster} alt='song-poster' className="song-poster" />
-            </span>
+            <span className="tooltip1">Book the first ever FSTs by preordering. When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
+          <div className="left">
+            <img src={songPoster} alt='song-poster' className="song-poster" />
             <span className="song-info">
                 <h1>On My Own</h1>
                 <h5><img src={artistImg} alt='NC' className="artist-img" />NC</h5>
-            </span>   
+            </span> 
+          </div> 
             <div className="white-container-inner">
                 <p className="qty">Quantity</p>
                 <input className="qty-input" id="quantity" type="number" placeholder="---" min="0" step="1" max="100" onChange={handleChange} />
@@ -164,11 +160,13 @@ function BuyNow() {
                 <br />
                 <br />
                 <br />
-                {/* <Link to="/congrats"> */}
-                <button type="button" name="button" className="btn-primary buy-now-btn" id="buy-now" onClick={popup}>
-                    Book Now
+                <button type="button" name="button" className="btn-primary buy-now-btn" id="buy-now" onClick={buyTokns}>
+                   {processing ? <span>Processing...</span> : <span>Book Now</span>} 
                 </button>
-                <div className="popup-wrapper">
+                <br />
+              
+
+                {/* <div className="popup-wrapper">
                   <div className="popup">
                     <div className="popup-close" onClick={popout}>+</div>
                     <div className="popup-content">
@@ -177,16 +175,20 @@ function BuyNow() {
                       </button>
                       <br />
                       <br />
-                      
-                      <button type="button" name="button" class="btn-primary buy-now-btn popup-btn" id="buy-now" onClick={redeemTokens}>
+                      <Link to="/congrats">
+                      <button type="button" name="button" class="btn-primary buy-now-btn popup-btn" id="buy-now">
                         Have already paid
                       </button>
-                    
+                      </Link>
                     </div>
                   </div>
-                </div>
-                {/* </Link> */}
-            </div>          
+                </div> */}
+            <Link to="/congrats">
+                <p className="your-tokns-btn">
+                  Booked Tokns 
+                </p>
+                </Link>
+              </div> 
         </div>
     </div>
   );

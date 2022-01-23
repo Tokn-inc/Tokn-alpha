@@ -3,7 +3,7 @@
 .App {
   font-family: "roboto", sans-serif;
   text-align: center;
-}
+} 
 
 .background {
   display: inline-block;
@@ -285,6 +285,13 @@ input:focus {
   padding: 5px 20px;
 }
 
+.sign-in, .sign-up {
+  font-weight: normal;
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
 /***************************** Login *****************************/
 
 .wcLogin {
@@ -293,10 +300,19 @@ input:focus {
 
 .login-btn {
   position: relative;
-  left: 0.9rem;
+  left: 0rem;
 }
 
 /***************************** Buy Now *****************************/
+
+.buy-now-wrap {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "roboto", sans-serif;
+  text-align: center;
+}
 
 .wallet-address {
   position: absolute;
@@ -335,87 +351,86 @@ input:focus {
 
 .white-container2 {
   color: gray;
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: white;
   border-radius: 50px;
   box-shadow: 0 5px 10px rgba(66, 63, 63, 0.2);
   font-weight: 500;
   margin-top: 13vh;
-  padding: 3rem 5rem 0;
+  padding: 3rem 5rem 2.5rem;
   position: relative;
 }
 
-.info {
+.left {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  position: relative;
+}
+
+.right-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 9rem;
+}
+
+.info {
   height: 25px;
   width: 25px;
-  justify-content: center;
-  vertical-align: middle;
   border-radius: 100%;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.1) !important;
   color: rgba(0, 0, 0, 0.2);
   font-weight: bold;
   font-size: 0.9rem;
-  position: relative;
-  bottom: 30px;
-  right: 50px;
+  position: absolute;
+  top: 30px;
+  left: 50px;
 }
 
 .tooltip1{
   height: 3rem;
-  width: 20rem !important;
+  width: 18rem !important;
   display: none;
   color: black;
   background-color: rgba(0, 0, 0, 0.2);
-  float: right;
   font-size: 0.6rem;
-  margin-top: 0;
   position: absolute;
-  left: 1.7rem;
+  top: 1.5rem;
+  left: 5rem;
   padding: 0.5rem 0.5rem;
   border-radius: 10px;
 }
 
 .song-poster {
-  display: inline-block;
   height: 15rem;
   width: 15rem;
   border-radius: 25px;
-  position: relative;
-  bottom: 10.5rem;
-  margin-bottom: 1rem;
 }
 
 .song-info {
-  display: inline-block;
   text-align: left;
-  margin-left: -15rem;
-  position: relative;
-  top: 2.2rem;
 }
 
 .song-info h1 {
   letter-spacing: -0.7px;
   font-size: 1.9rem;
-}
-
-.song-info h5 {
-  position: relative;
-  bottom: 0.5em;
+  margin-top: 1rem;
 }
 
 .artist-img {
-  display: inline-block;
   height: 35px;
   width: 35px;
   border-radius: 100%;
   box-shadow: 1px 1px 5px rgba(66, 63, 63, 0.4);
   position: relative;
-  top: -2px;
-  right: 27px;
-  margin-right: -18px;
-  margin-left: 1.7rem;
+  bottom: 0.2rem;
+  margin-right: 12px;
 }
 
 .white-container-inner {
@@ -425,8 +440,8 @@ input:focus {
   border-radius: 25px;
   box-shadow: 0 5px 10px rgba(66, 63, 63, 0.35);
   font-weight: 500;
-  margin-left: 9rem;
   margin-bottom: 2rem;
+  margin-left: 9rem;
   padding: 2rem 1rem 1rem;
   text-align: center;
 }
@@ -482,9 +497,23 @@ hr {
   border-style: none;
   font-size: 0.8rem;
   padding: 7px 25px;
-  position: relative;
-  bottom: 1rem;
   cursor: pointer;
+  margin-bottom: 1.3rem;
+}
+
+.btn-sep {
+  margin-bottom: 0;
+}
+
+.your-tokns-btn {
+  color: #27BFFF;
+  font-size: 0.8rem;
+  margin-top: 0;
+}
+
+.your-tokns-btn:hover {
+  color: #27BFFF;
+  text-decoration: underline;
 }
 
 .buy-now-btn:hover {
@@ -499,42 +528,47 @@ hr {
   opacity: 40%;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
 
   .white-container2{
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-bottom: 26rem;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3.7rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
+    padding-bottom: 3.5rem;
     margin-bottom: 6rem;
   }
 
+  .tooltip1 {
+    top: 0.5rem;
+  }
+
   .white-container-inner {
-    margin-left: 0;
-    position: relative;
-    top: 24rem;
-    right: 5rem;
+    margin: 2rem auto 0;
   }
 
   .info {
-    position: relative;
-    left: 0.5rem;
+    left: 30px;
   }
 
-  .song-img, .song-info {
-    position: relative;
-    left: 6.5rem;
+  .tooltip1 {
+    left: 4rem;
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .white-container2{
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .info {
-    position: relative;
-    left: 2rem;
+    left: 30px;
+  }
+
+  .tooltip1 {
+    left: 4rem;
   }
 }
 
@@ -583,8 +617,7 @@ hr {
 /***************************** Congrats *****************************/
 
 .wci2 {
-  padding-top: 1.5rem;
-  padding-bottom: 2.5rem;
+ 
 }
 
 .congrats {

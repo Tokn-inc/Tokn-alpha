@@ -15,12 +15,16 @@ function Login() {
   
 
    useEffect(() => {
+     if(!address){
+    alert("Connect wallet first!")
+    window.location = '/metamask'
+  } 
      if(loggedIn){
       
       window.location = "/buy-now"
     }
      
-      dispatch(loginWithJWT())
+      dispatch(loginWithJWT(address))
     
     
   }, [])
@@ -64,7 +68,7 @@ function Login() {
               <button type="button" name="button" class="btn-primary confirm login-btn" onClick={userLogin}>
                 Login
               </button>
-            
+            <Link to='/create-account'><p className="sign-up">New User? Sign up</p></Link>
         </div>
     </div>
   );

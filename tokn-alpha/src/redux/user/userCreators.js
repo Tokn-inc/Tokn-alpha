@@ -118,9 +118,9 @@ export const login =
     }
   };
 
-export const loginWithJWT = () => async (dispatch) => {
+export const loginWithJWT = (address) => async (dispatch) => {
   axios
-    .get("http://localhost:8081/cookie-check", axiosConfig)
+    .get("http://localhost:8081/cookie-check", { address }, axiosConfig)
     .then((response) => {
       dispatch(
         loginSuccess({
