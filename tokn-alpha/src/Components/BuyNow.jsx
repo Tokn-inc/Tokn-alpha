@@ -15,6 +15,7 @@ function BuyNow() {
   const [amount, setAmount] = useState(0)
   const [toknsAvailable, setToknsAvailable] = useState(0)
   const [price, setPrice] = useState(0)
+  const [treasury, setTreasury] = useState(0)
   const [errmess,setErrmess] = useState(null)
   const {address, error, balance, loading} = useSelector((state) => state.wallet)
   const {loggedIn} = useSelector((state) => state.user)
@@ -29,7 +30,8 @@ function BuyNow() {
      async function getToknDetails(){
       const toknITO = await contract.methods.getITO('1').call();
       const tokns = toknITO.toknsAvailable;
-
+      const treasurypc = await contract.methods.treasuryPercentage().call();
+      setTreasury(treasurypc)
       const toknPrice = toknITO.price;
       setPrice(toknPrice)
       setToknsAvailable(tokns)
@@ -56,7 +58,8 @@ function BuyNow() {
     event.preventDefault()
     setQty(event.target.value * 1)
     setRyl(event.target.value * 0.1)
-    setAmount(event.target.value * price/1000000)
+    let amt = event.target.value * price/1000000;
+    setAmount(Number(amt) + Number(amt*treasury/100))
     setErrmess(null)
     console.log(typeof event.target.value)
     console.log(typeof toknsAvailable);
@@ -80,7 +83,7 @@ function BuyNow() {
       try{
       console.log("processing...");
       setProcessing(true)
-      await usdc.methods.approve(contract._address, qty*price).send({from: address})
+      await usdc.methods.approve(contract._address, amount*1000000).send({from: address})
       console.log("approved");
     await contract.methods.investFixedPrice(1, qty).send({from: address})
     

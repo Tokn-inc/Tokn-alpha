@@ -120,7 +120,11 @@ export const login =
 
 export const loginWithJWT = (address) => async (dispatch) => {
   axios
-    .get("http://localhost:8081/cookie-check", { address }, axiosConfig)
+    .post(
+      "http://localhost:8081/cookie-check",
+      { address: address },
+      axiosConfig
+    )
     .then((response) => {
       dispatch(
         loginSuccess({

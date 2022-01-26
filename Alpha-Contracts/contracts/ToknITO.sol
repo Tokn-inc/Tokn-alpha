@@ -27,7 +27,7 @@ contract ToknITO{
     mapping(uint => ITOConfig) public toknITOs;
     mapping(address => uint) public artistTracker;
     mapping(address => uint) public userTracker;
-    // mapping(address => uint) public hasPaid;
+    mapping(address => bool) public hasPaid;
     
     address[] public artistList;
     address[] public userList;
@@ -149,8 +149,11 @@ contract ToknITO{
         uint toknPrice = toknITOs[_id].price;
         uint cost = _amount*100/uint(100 + treasuryPercentage);
         uint tokens = cost*10**6/toknPrice;
+        toknITOs[_id].toknsAvailable -= tokens;
+        toknITOs[_id].investors.push(payable(_user));
         bookedTokns[_id][_user] += tokens;
-        usdc.transferFrom(msg.sender, address(this), _amount*10**6);
+        hasPaid[_user] = true;
+        // usdc.transferFrom(msg.sender, address(this), _amount*10**6);
     }
 
     function bookTokensForUsers(address[] calldata _users, uint _id, uint[] calldata _amounts) public {
@@ -161,9 +164,12 @@ contract ToknITO{
             amount += _amounts[i]*10**6;
             uint cost = _amounts[i]*100/uint(100 + treasuryPercentage);
             uint tokens = cost*10**6/toknPrice;
+            toknITOs[_id].toknsAvailable -= tokens;
+            toknITOs[_id].investors.push(payable(_users[i]));
             bookedTokns[_id][_users[i]] += tokens;
+            hasPaid[_users[i]] = true;
         }
-        usdc.transferFrom(msg.sender, address(this), amount);
+        // usdc.transferFrom(msg.sender, address(this), amount);
 
     }
     
@@ -178,8 +184,11 @@ contract ToknITO{
             uint amount = toknITOs[_id].price * bookedTokns[_id][toknInvestors[i]];
             uint treasury_amount = amount*treasuryPercentage/uint(100);
             // uint artistAmount = amount - treasury_amount;
-            usdc.transfer(treasury, treasury_amount);
-            usdc.transfer(msg.sender, amount);
+            if(!hasPaid[toknInvestors[i]]){
+                usdc.transfer(treasury, treasury_amount);
+                usdc.transfer(msg.sender, amount);
+            }
+            
             airdropTracker(_id, toknInvestors[i], amount);
         }
     }
