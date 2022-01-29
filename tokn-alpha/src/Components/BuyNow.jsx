@@ -101,7 +101,7 @@ function BuyNow() {
     
     }catch(error){
       console.log("Error in catch");
-      alert(error)
+      alert("Something went wrong.")
     }
     }
     

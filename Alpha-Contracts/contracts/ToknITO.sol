@@ -6,13 +6,13 @@ import "./ToknFactory.sol";
 
 
 
-contract ToknITO{
+contract ToknITO is Pausable{
     
     ToknFactory public toknFactory;
     UsdcToken public usdc;
     address payable public treasury;
 
-    uint public treasuryPercentage = 5;
+    uint public treasuryPercentage = 13;
 
     enum State {Started, Running, Cancelled, Ended}
     
@@ -51,12 +51,12 @@ contract ToknITO{
     //         setUserHasPaid(_users[i], _amounts[i]);
     //     }
     // }
-    function setTreasuryPercentage(uint _pc) public {
+    function setTreasuryPercentage(uint _pc) public whenNotPaused{
         require(msg.sender == treasury, "Caller not authorized");
         treasuryPercentage = _pc;
     }
 
-    function setTreasury(address _treasury) public {
+    function setTreasury(address _treasury) public whenNotPaused{
         require(msg.sender == treasury, "Caller not authorized");
         treasury = payable(_treasury);
     }
@@ -91,7 +91,7 @@ contract ToknITO{
     }
     
 
-    function setToknPrice(uint _id, uint _price) public {
+    function setToknPrice(uint _id, uint _price) public whenNotPaused{
         
         require(toknFactory.toknIdToArtist(_id) == msg.sender && _price != 0);
         toknITOs[_id].price = _price*10**6;
@@ -99,14 +99,14 @@ contract ToknITO{
     
    
     
-    function startITO(uint _id) public {
+    function startITO(uint _id) public whenNotPaused{
         
         require(toknFactory.toknIdToArtist(_id) == msg.sender && toknITOs[_id].price != 0);
         toknITOs[_id].itoState = State.Running;
         toknITOs[_id].toknsAvailable = toknFactory.balanceOf(msg.sender, _id);
     }
     
-    function stopITO(uint _id) public {
+    function stopITO(uint _id) public whenNotPaused{
         
         require(toknFactory.toknIdToArtist(_id) == msg.sender && toknITOs[_id].itoState== State.Running);
         toknITOs[_id].itoState = State.Ended;
@@ -121,7 +121,7 @@ contract ToknITO{
         return toknITOs[_id];
     }
     
-    function investFixedPrice(uint _id, uint _qty) public{
+    function investFixedPrice(uint _id, uint _qty) public whenNotPaused{
         
         require(_qty <= toknITOs[_id].toknsAvailable && toknITOs[_id].itoState == State.Running);
         uint usdcAmount = _qty * toknITOs[_id].price;
@@ -144,7 +144,7 @@ contract ToknITO{
     //     hasPaid[msg.sender] = 0;
     // }
 
-    function bookTokensForUser(address _user, uint _id, uint _amount) public {
+    function bookTokensForUser(address _user, uint _id, uint _amount) public whenNotPaused{
         require(msg.sender == toknFactory.deployer());
         uint toknPrice = toknITOs[_id].price;
         uint cost = _amount*100/uint(100 + treasuryPercentage);
@@ -156,7 +156,7 @@ contract ToknITO{
         // usdc.transferFrom(msg.sender, address(this), _amount*10**6);
     }
 
-    function bookTokensForUsers(address[] calldata _users, uint _id, uint[] calldata _amounts) public {
+    function bookTokensForUsers(address[] calldata _users, uint _id, uint[] calldata _amounts) public whenNotPaused{
         require(msg.sender == toknFactory.deployer());
         uint amount = 0;
         uint toknPrice = toknITOs[_id].price;
@@ -173,7 +173,7 @@ contract ToknITO{
 
     }
     
-    function allocateFixedPrice(uint _id) public{
+    function allocateFixedPrice(uint _id) public whenNotPaused{
         // stopITO(_id);
         
         require(toknFactory.toknIdToArtist(_id) == msg.sender);
@@ -196,5 +196,15 @@ contract ToknITO{
    function getBookedToknsFor(address _investor, uint _id) public view returns (uint) {
        return bookedTokns[_id][_investor];
    }
+
+   function pause() public {
+        require(msg.sender == toknFactory.deployer());
+        _pause();
+    }
+
+    function unPause() public {
+        require(msg.sender == toknFactory.deployer());
+        _unpause();
+    }
     
 }

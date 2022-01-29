@@ -2,6 +2,7 @@
 
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
 
 interface UsdcToken {
     function balanceOf(address tokenOwner) external view returns (uint balance);
@@ -11,7 +12,7 @@ interface UsdcToken {
     function allowance(address tokenOwner, address spender) external view returns (uint remaining);
 }
 
-contract ToknFactory is ERC1155{
+contract ToknFactory is ERC1155, Pausable{
   
     address payable public deployer;
     uint public toknId;
@@ -44,7 +45,7 @@ contract ToknFactory is ERC1155{
     }
     
     //lets artist create his investor token
-    function createInvestorTokns(string memory _symbol, uint _amount, string memory _uri) public {
+    function createInvestorTokns(string memory _symbol, uint _amount, string memory _uri) public whenNotPaused{
         toknIdToArtist[++toknId] = msg.sender;
         symbolToId[_symbol] = toknId;
         artistTokns[msg.sender].push(toknId);
@@ -53,14 +54,14 @@ contract ToknFactory is ERC1155{
     }
     
     //lets artists mint more of his investor tokens
-    function mintInvestorTokns(uint _amount, uint _toknId) public isToknOwner(_toknId, msg.sender){
+    function mintInvestorTokns(uint _amount, uint _toknId) public isToknOwner(_toknId, msg.sender) whenNotPaused{
         _mint(msg.sender, _toknId, _amount, bytes(toknIdToURI[_toknId]));
         totalSupplies[_toknId] += _amount;
         toknsAvailable[_toknId] += _amount;
     }
     
     
-    function burnInvestorTokns(uint _amount, uint _toknId) public isToknOwner(_toknId, msg.sender){
+    function burnInvestorTokns(uint _amount, uint _toknId) public isToknOwner(_toknId, msg.sender) whenNotPaused{
         _burn(msg.sender, _toknId, _amount);
         totalSupplies[_toknId] -= _amount;
         toknsAvailable[_toknId] -= _amount;
@@ -76,7 +77,7 @@ contract ToknFactory is ERC1155{
         uint256 id,
         uint256 amount,
         bytes memory data
-    ) public override (ERC1155) {
+    ) public override (ERC1155) whenNotPaused {
         require(
             from == _msgSender() || isApprovedForAll(from, _msgSender()),
             "ERC1155: caller is not owner nor approved"
@@ -97,4 +98,13 @@ contract ToknFactory is ERC1155{
         addressTracker[id].push(to);
     }
 
+    function pause() public {
+        require(msg.sender == deployer);
+        _pause();
+    }
+
+    function unPause() public {
+        require(msg.sender == deployer);
+        _unpause();
+    }
 }
