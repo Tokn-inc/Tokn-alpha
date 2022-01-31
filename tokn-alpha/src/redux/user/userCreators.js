@@ -11,7 +11,7 @@ import {
 
 let axiosConfig = {
   withCredentials: true,
-  baseURL: "http://devapi.toknmusic.com/",
+  baseURL: "https://devapi.toknmusic.com/",
 };
 
 export const signupRequest = () => {
@@ -64,7 +64,7 @@ export const signup =
     return confirm_password === password
       ? axios
           .post(
-            "http://devapi.toknmusic.com/newUser",
+            "https://devapi.toknmusic.com/newUser",
             {
               username,
               password,
@@ -93,7 +93,7 @@ export const login =
     try {
       await axios
         .post(
-          "http://devapi.toknmusic.com/login",
+          "https://devapi.toknmusic.com/login",
           { detail, password, walletAddress },
           axiosConfig
         )
@@ -121,7 +121,7 @@ export const login =
 export const loginWithJWT = (address) => async (dispatch) => {
   axios
     .post(
-      "http://devapi.toknmusic.com/cookie-check",
+      "https://devapi.toknmusic.com/cookie-check",
       { address: address },
       axiosConfig
     )

@@ -111,7 +111,7 @@ export const connectWallet = (web3) => (dispatch) => {
         // handle other "switch" errors
       }
       axios
-        .post("http://devapi.toknmusic.com/check-whitelist", {
+        .post("https://devapi.toknmusic.com/check-whitelist", {
           address: res[0],
         })
         .then((response) => {

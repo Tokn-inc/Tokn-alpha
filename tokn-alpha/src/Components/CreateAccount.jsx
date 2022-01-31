@@ -43,6 +43,10 @@ function CreateAccount() {
     }
    
       dispatch(loginWithJWT(address))
+      console.log(email);
+      // if(password){
+
+      // }
     
   }, [])
 
@@ -69,6 +73,7 @@ function CreateAccount() {
 
   const handlePasswordChange = (e) => {
     setTerms(true);
+    console.log("Here")
     
     if(e.target.value.length >= 6 ) {
       setTerm1(true);
@@ -98,7 +103,9 @@ function CreateAccount() {
       setTerms(false);
     }
     setPassword(e.target.value)
+  
     if(term1 && term2 && term3 && term4){
+      console.log("here 2");
       setValidPass(true)
     }else{
       setValidPass(false)
