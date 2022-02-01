@@ -14,7 +14,7 @@ require("dotenv").config();
 
 let axiosConfig = {
   withCredentials: true,
-  baseURL: process.env.REACT_APP_API_URL + "/",
+  baseURL: process.env.REACT_APP_API_URL,
 };
 
 export const signupRequest = () => {
