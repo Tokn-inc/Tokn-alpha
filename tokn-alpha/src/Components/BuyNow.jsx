@@ -101,7 +101,8 @@ function BuyNow() {
     
     }catch(error){
       console.log("Error in catch");
-      alert("Something went wrong.")
+      alert("Something went wrong. Check if your metamask is logged in with correct address and try reloading.")
+      setProcessing(false)
     }
     }
     
@@ -135,10 +136,10 @@ function BuyNow() {
             </span>
             <span className="tooltip1">Book the first ever FSTs by preordering. When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
           <div className="left">
-            <img src={songPoster} alt='song-poster' className="song-poster" />
+            <span className="song-poster" />
             <span className="song-info">
-                <h1>On My Own</h1>
-                <h5><img src={artistImg} alt='NC' className="artist-img" />NC</h5>
+                <h1>Song Title</h1>
+                <h5><span className="artist-img"></span>Artist Name</h5>
             </span> 
           </div> 
             <div className="white-container-inner">

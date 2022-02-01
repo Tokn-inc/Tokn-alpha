@@ -411,6 +411,7 @@ input:focus {
   height: 15rem;
   width: 15rem;
   border-radius: 25px;
+  background-color: #dbc7fe;
 }
 
 .song-info {
@@ -431,6 +432,7 @@ input:focus {
   position: relative;
   bottom: 0.2rem;
   margin-right: 12px;
+  background-color: #76caff !important;
 }
 
 .white-container-inner {

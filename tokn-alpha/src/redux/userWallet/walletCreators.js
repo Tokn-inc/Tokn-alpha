@@ -190,13 +190,16 @@ export const disconnectWallet = (web3) => (dispatch) => {
 export const updateBalance = (address, id) => async (dispatch) => {
   dispatch(updateBalanceRequest());
   console.log("Updating Balance...");
+
   try {
     const balance = await contract.methods
       .getBookedToknsFor(address, id)
       .call();
     return dispatch(updateBalanceSuccess(balance));
   } catch (error) {
-    alert(error.message);
+    alert(
+      "Something went wrong. Please check if you are logged in with correct metamask network and account and try reloading."
+    );
     return dispatch(updateBalanceFailure(error.message));
   }
 };

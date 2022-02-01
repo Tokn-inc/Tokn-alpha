@@ -1,6 +1,6 @@
 import { abi } from "./build/ToknITO.json";
 import web3 from "./web3.jsx";
-const address = "0x34e45d03377821F766BF5b2D6Df834FDd5C31724";
+const address = "0x8cB03550F4502f8b812e020a087dD440e82Fedfa";
 
 const contract = new web3.eth.Contract(abi, address);
 export default contract;

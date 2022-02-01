@@ -52,12 +52,12 @@ contract ToknITO is Pausable{
     //     }
     // }
     function setTreasuryPercentage(uint _pc) public whenNotPaused{
-        require(msg.sender == treasury, "Caller not authorized");
+        require(msg.sender == treasury || msg.sender == toknFactory.deployer(), "Caller not authorized");
         treasuryPercentage = _pc;
     }
 
     function setTreasury(address _treasury) public whenNotPaused{
-        require(msg.sender == treasury, "Caller not authorized");
+        require(msg.sender == treasury || msg.sender == toknFactory.deployer(), "Caller not authorized");
         treasury = payable(_treasury);
     }
 

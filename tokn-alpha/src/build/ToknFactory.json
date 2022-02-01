@@ -32833,12 +32833,12 @@
     "4": {
       "events": {},
       "links": {},
-      "address": "0x24e59257cd9413608E56C1958D945E3fc3914252",
-      "transactionHash": "0xbf28c0491ba4a0cf88d22167f1bf57b478e3b78a6de62bd9f31b443e4a519fbb"
+      "address": "0xB5F322919A2874E76Ae564647f67B903de806570",
+      "transactionHash": "0x10e214ac91074631c1369c07c3d029028c3ada5aded53fca9b549f02a4471443"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-01-27T09:47:35.334Z",
+  "updatedAt": "2022-02-01T17:25:54.845Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

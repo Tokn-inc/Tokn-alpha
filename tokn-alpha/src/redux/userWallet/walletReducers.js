@@ -76,7 +76,7 @@ export const walletReducer = (
       return {
         ...state,
         loading: false,
-        balance: action.payload,
+        error: action.payload,
       };
 
     default:
