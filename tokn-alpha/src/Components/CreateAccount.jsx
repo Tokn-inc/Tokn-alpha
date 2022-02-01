@@ -47,6 +47,12 @@ function CreateAccount() {
       // if(password){
 
       // }
+    //   if(term1 && term2 && term3 && term4){
+    //   console.log("here 2");
+    //   setValidPass(true)
+    // }else{
+    //   setValidPass(false)
+    // }
     
   }, [])
 
@@ -62,49 +68,49 @@ function CreateAccount() {
   //   return String(password).match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
   // }
 
-  const handleEmailChange = (event) => {
-    if(validateEmail(event.target.value)){
-      setEmail(event.target.value) 
+  const handleEmailChange = (value) => {
+    if(validateEmail(value)){
+      setEmail(value) 
       setValidEmail(true)
     }else{
       setValidEmail(false)
     }
   }
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (value) => {
     setTerms(true);
     console.log("Here")
     
-    if(e.target.value.length >= 6 ) {
+    if(value.length >= 6 ) {
       setTerm1(true);
     }else{
       setTerm1(false)
     }
 
-    if(e.target.value.match(upperCaseLetters)) {
+    if(value.match(upperCaseLetters)) {
       setTerm2(true);
     }else{
       setTerm2(false)
     }
 
-    if(e.target.value.match(lowerCaseLetters)) {
+    if(value.match(lowerCaseLetters)) {
       setTerm3(true);
     }else{
       setTerm3(false)
     }
 
-    if(e.target.value.match(numbers)) {
+    if(value.match(numbers)) {
       setTerm4(true);
     }else{
       setTerm4(false)
     }
 
-    if(e.target.value === "") {
+    if(value === "") {
       setTerms(false);
     }
-    setPassword(e.target.value)
+    setPassword(value)
   
-    if(term1 && term2 && term3 && term4){
+    if(value.length >= 6 && value.match(upperCaseLetters) && value.match(lowerCaseLetters) && value.match(numbers)){
       console.log("here 2");
       setValidPass(true)
     }else{
@@ -120,10 +126,10 @@ function CreateAccount() {
     
   }
 
-  const matchPasswords = (event) => {
+  const matchPasswords = (value) => {
    
-    if(password === event.target.value){
-      setConfirm_password(event.target.value) 
+    if(password === value){
+      setConfirm_password(value) 
  
       setMatch(true)
     }else{
@@ -169,10 +175,10 @@ function CreateAccount() {
             <p className="login-label">Username</p>
             <input className="pwd-input" type="text" name="" placeholder="Toknmusic" onChange={(event) => {setUsername(event.target.value) }}/>
             <p className="login-label">Email</p>
-            <input type="text" name="" placeholder="email@email.com" onChange={handleEmailChange}/>
+            <input type="text" name="" placeholder="email@email.com" onChange={(event) => handleEmailChange(event.target.value)}/>
             {validEmail ? null: <p className="valid-email-pass">Please enter a valid email</p>}
             <p className="login-label">Password</p>
-            <input className="pwd-input" type="password" name="" placeholder="Password" onChange={handlePasswordChange}/>
+            <input className="pwd-input" type="password" name="" placeholder="Password" onChange={(event)=> handlePasswordChange(event.target.value)}/>
             {terms && <div className="pswd-terms">
               {!term1 && <p className="pswd-red">Must contain at least 6 characters</p>}
               {term1 && <p className="pswd-green">Must contain at least 6 characters</p>}
@@ -184,7 +190,7 @@ function CreateAccount() {
               {term4 && <p className="pswd-green">Must contain a number</p>}
             </div>}
             <p className="login-label">Confirm Password</p>
-            <input type="password" name="" placeholder="Confirm Password" onChange={matchPasswords}/>
+            <input type="password" name="" placeholder="Confirm Password" onChange={(event) => matchPasswords(event.target.value)}/>
             {match ? null: <p className="valid-email-pass">Passwords do not match</p>}
             <br />
             <br />

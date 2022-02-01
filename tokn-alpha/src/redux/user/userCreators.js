@@ -1,4 +1,5 @@
 import axios from "axios";
+// import dotenv from "dotenv";
 
 import {
   LOGIN_FAILURE,
@@ -9,9 +10,11 @@ import {
   SIGNUP_SUCCESS,
 } from "./userActions";
 
+require("dotenv").config();
+
 let axiosConfig = {
   withCredentials: true,
-  baseURL: "https://devapi.toknmusic.com/",
+  baseURL: process.env.REACT_APP_API_URL + "/",
 };
 
 export const signupRequest = () => {
@@ -64,7 +67,7 @@ export const signup =
     return confirm_password === password
       ? axios
           .post(
-            "https://devapi.toknmusic.com/newUser",
+            process.env.REACT_APP_API_URL + "/newUser",
             {
               username,
               password,
@@ -93,7 +96,7 @@ export const login =
     try {
       await axios
         .post(
-          "https://devapi.toknmusic.com/login",
+          process.env.REACT_APP_API_URL + "/login",
           { detail, password, walletAddress },
           axiosConfig
         )
@@ -121,7 +124,7 @@ export const login =
 export const loginWithJWT = (address) => async (dispatch) => {
   axios
     .post(
-      "https://devapi.toknmusic.com/cookie-check",
+      process.env.REACT_APP_API_URL + "/cookie-check",
       { address: address },
       axiosConfig
     )

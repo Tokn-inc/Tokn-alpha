@@ -2,6 +2,7 @@ import axios from "axios";
 import factory from "../../FactoryContract";
 import contract from "../../ToknContract";
 import Web3 from "web3";
+// import dotenv from "dotenv";
 
 import {
   CONNECT_WALLET_FAILURE,
@@ -15,6 +16,7 @@ import {
   DISCONNECT_WALLET_SUCCESS,
 } from "./walletActions";
 
+require("dotenv").config();
 export const connectWalletRequest = () => {
   return {
     type: CONNECT_WALLET_REQUEST,
@@ -111,7 +113,7 @@ export const connectWallet = (web3) => (dispatch) => {
         // handle other "switch" errors
       }
       axios
-        .post("https://devapi.toknmusic.com/check-whitelist", {
+        .post(process.env.REACT_APP_API_URL + "/check-whitelist", {
           address: res[0],
         })
         .then((response) => {
