@@ -408,10 +408,10 @@ input:focus {
 }
 
 .song-poster {
+  background-color: #dbc7fe;
   height: 15rem;
   width: 15rem;
   border-radius: 25px;
-  background-color: #dbc7fe;
 }
 
 .song-info {
@@ -425,14 +425,23 @@ input:focus {
 }
 
 .artist-img {
+  background-color: #76caff;
+  display: inline-block;
   height: 35px;
   width: 35px;
   border-radius: 100%;
   box-shadow: 1px 1px 5px rgba(66, 63, 63, 0.4);
-  position: relative;
-  bottom: 0.2rem;
   margin-right: 12px;
-  background-color: #76caff !important;
+}
+
+.artist-info {
+  display: flex;
+  align-items: center;
+}
+
+.artist-info h5 {
+  position: relative;
+  top: 0.3rem;
 }
 
 .white-container-inner {

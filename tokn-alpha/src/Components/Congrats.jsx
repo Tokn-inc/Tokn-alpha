@@ -42,21 +42,24 @@ function Congrats() {
             </span>
             <span className="tooltip1">Book the first ever FSTs by preordering. When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
           <div className="left">
-            <img src={songPoster} alt='song-poster' className="song-poster" />
-            <span className="song-info song-info2">
-                <h1>On My Own</h1>
-                <h5><img src={artistImg} alt='NC' className="artist-img" />NC</h5>
+            <span className="song-poster"></span>
+            <span className="song-info">
+                <h1>Song Title</h1>
+                <div className="artist-info">
+                  <span className="artist-img"></span>
+                  <h5>Artist Name</h5>
+                </div>
             </span> 
           </div>
             <div className="white-container-inner">
                 <h6><img src={congrats} className="congrats" alt="congrats" />Congrats!<img src={congrats} className="congrats" alt="congrats" /></h6>
                 <p className="large-text">You've booked the first ever FST!!! <br />
                 To say thanks for participating in our test launch, <br />
-                we have sent some extra rewards to your wallet :) <br />
+                we will send some extra rewards to your wallet :) <br />
                 <span className="blue-text">What happens next?</span> Tokn Music will launch in <br />
-                February of 2022 and you'll get early access <br />
-                so make sure to keep up to date with everything <br />
-                on our telegram or other socials. <span className="bold-text">See you soon!</span></p>
+                Q3 2022 and you'll get early access. <br />
+                So make sure to keep up to date with everything <br />
+                on our telegram or other socials linked above.<br /> <span className="bold-text">See you soon!</span></p>
                 <br />
                 <Link to="/buy-now">
                 <button type="button" name="button" class="btn-primary buy-now-btn">

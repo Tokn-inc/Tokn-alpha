@@ -136,12 +136,15 @@ function BuyNow() {
             </span>
             <span className="tooltip1">Book the first ever FSTs by preordering. When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
           <div className="left">
-            <span className="song-poster" />
+            <span className="song-poster"></span>
             <span className="song-info">
                 <h1>Song Title</h1>
-                <h5><span className="artist-img"></span>Artist Name</h5>
+                <div className="artist-info">
+                  <span className="artist-img"></span>
+                  <h5>Artist Name</h5>
+                </div>
             </span> 
-          </div> 
+          </div>
             <div className="white-container-inner">
                 <p className="qty">Quantity</p>
                 <input className="qty-input" id="quantity" type="number" placeholder="---" min="0" step="1" max="100" onChange={handleChange} />
