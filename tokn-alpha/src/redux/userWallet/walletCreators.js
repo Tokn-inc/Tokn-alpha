@@ -123,7 +123,7 @@ export const connectWallet = (web3) => (dispatch) => {
         .catch((error) => {
           dispatch(connectWalletFailure(error.message));
           console.log(error);
-          alert("wallet not whitelisted");
+          alert("wallet not whitelisted!");
         });
 
       // window.location = "/create-account";
