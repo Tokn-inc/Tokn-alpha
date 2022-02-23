@@ -73,6 +73,15 @@ module.exports = {
       timeoutBlocks: 300,
       skipDryRun: true,
     },
+    polygon: {
+      provider: function () {
+        return new HDWalletProvider(
+          mnemonic,
+          "https://speedy-nodes-nyc.moralis.io/7ce69af8c67a5c54f3533468/polygon/mainnet"
+        );
+      },
+      network_id: 137,
+    },
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
@@ -104,7 +113,7 @@ module.exports = {
   mocha: {
     // timeout: 100000
   },
-  contracts_build_directory: "../tokn-alpha/src/build",
+  // contracts_build_directory: "../tokn-alpha/src/build",
   // Configure your compilers
   compilers: {
     solc: {

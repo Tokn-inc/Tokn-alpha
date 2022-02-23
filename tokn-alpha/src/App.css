@@ -3,7 +3,20 @@
 .App {
   font-family: "roboto", sans-serif;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh
 } 
+
+.copyright {
+  color: white;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 3vh;
+}
 
 .background {
   display: inline-block;
@@ -19,7 +32,7 @@
 .logo {
   height: 120px;
   width: 120px;
-  margin-top: 35vh;
+  /* margin-top: 35vh; */
 }
 
 .coming {
@@ -57,7 +70,7 @@
   background-color: white;
   border-radius: 50px;
   font-weight: 500;
-  margin-top: 12vh;
+  /* margin-top: 12vh; */
   padding: 3rem 5rem;
   box-shadow: 0 5px 10px rgba(66, 63, 63, 0.2);
 }
@@ -122,7 +135,7 @@
 
 .ethAccount {
   color: white;
-  margin-top: 18rem;
+  margin-top: 4rem;
 }
 
 .next {
@@ -134,15 +147,16 @@
 .connect-wallet {
   color: white;
   font-size: 2.5rem;
-  position: relative;
-  top: 25vh;
+  /* position: relative; */
+  /* top: 25vh; */
+  margin-bottom: 4rem;
 }
 
 .metamask-img {
   height: 2.5rem;
   width: 2.5rem;
   position: relative;
-  top: 33vh;
+  /* top: 33vh; */
   left: 3rem;
   z-index: 1;
 }
@@ -153,7 +167,7 @@
   border-radius: 100px;
   padding: 1rem 8rem;
   position: relative;
-  top: 33vh;
+  /* top: 33vh; */
   right: 0.8rem;
 }
 
@@ -295,7 +309,7 @@ input:focus {
 /***************************** Login *****************************/
 
 .wcLogin {
-  margin-top: 20vh !important;
+  /* margin-top: 20vh !important; */
 }
 
 .login-btn {
@@ -308,10 +322,11 @@ input:focus {
 .buy-now-wrap {
   display: flex !important;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   font-family: "roboto", sans-serif;
   text-align: center;
+  min-height: 100vh;
 }
 
 .wallet-address {
@@ -358,7 +373,7 @@ input:focus {
   border-radius: 50px;
   box-shadow: 0 5px 10px rgba(66, 63, 63, 0.2);
   font-weight: 500;
-  margin-top: 13vh;
+  /* margin-top: 13vh; */
   padding: 3rem 5rem 2.5rem;
   position: relative;
 }
@@ -539,6 +554,12 @@ hr {
   opacity: 40%;
 }
 
+@media (max-height: 650px) {
+  .white-container2 {
+    margin-top: 4.5rem;
+  }
+}
+
 @media (max-width: 950px) {
 
   .white-container2{
@@ -549,6 +570,7 @@ hr {
     padding-right: 7rem;
     padding-bottom: 3.5rem;
     margin-bottom: 6rem;
+    margin-top: 13vh;
   }
 
   .tooltip1 {
@@ -565,6 +587,12 @@ hr {
 
   .tooltip1 {
     left: 4rem;
+  }
+
+  @media (max-height: 630px) {
+    .white-container2 {
+      margin-top: 4.5rem;
+    }
   }
 }
 

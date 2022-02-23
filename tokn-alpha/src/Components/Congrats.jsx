@@ -5,8 +5,8 @@ import '../App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { updateBalance } from '../redux';
-import songPoster from './song-poster.jpg';
-import artistImg from './NC-img.png';
+import songPoster from './song.jpg';
+import artistImg from './artist.jpg';
 
 function Congrats() {
   const {address, balance} = useSelector(state => state.wallet)
@@ -42,12 +42,12 @@ function Congrats() {
             </span>
             <span className="tooltip1">Book the first ever FSTs by preordering. When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
           <div className="left">
-            <span className="song-poster"></span>
+            <img src={songPoster} alt="" className="song-poster" />
             <span className="song-info">
-                <h1>Song Title</h1>
+                <h1>In My Head</h1>
                 <div className="artist-info">
-                  <span className="artist-img"></span>
-                  <h5>Artist Name</h5>
+                  <img src={artistImg} alt="" className="artist-img" />
+                  <h5>Stevie Flowers</h5>
                 </div>
             </span> 
           </div>

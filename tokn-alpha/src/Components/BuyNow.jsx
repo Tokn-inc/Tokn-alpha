@@ -5,8 +5,8 @@ import '../App.css';
 import contract from "../ToknContract";
 import usdc from "../usdcContract";
 import { updateBalance } from "../redux";
-import songPoster from './song-poster.jpg';
-import artistImg from './NC-img.png';
+import songPoster from './song.jpg';
+import artistImg from './artist.jpg';
 
 function BuyNow() {
 
@@ -121,27 +121,34 @@ function BuyNow() {
     document.querySelector('.tooltip1').style.display = 'none';
   }
 
- 
+ function toggleTooltip() {
+  var x = document.querySelector('.tooltip1');
+  if (x.style.display === "none") {
+    x.style.display = "inline-block";
+  } else {
+    x.style.display = "none";
+  }
+}
 
   return (
-    <div className="buy-now-wrap">
+    <div className="buy-now-wrap" >
       <div className="wallet-wrap">
         <p className="wallet-address">Active Wallet: <span id="address">{address.substring(0,5) + "..." + address.substring(13,18)}</span></p>
         <p className="balance">Tokns Booked: <span id="bal">{balance}</span></p>
       </div>
         
         <div className="white-container2">
-            <span className="info" onMouseOver={tooltip} onMouseOut={tooltipNone}>
+            <span className="info" onMouseOver={tooltip} onMouseOut={tooltipNone} onClick={toggleTooltip}>
               i 
             </span>
             <span className="tooltip1">Book the first ever FSTs by preordering. When beta goes live, tokn-holders will receive their FSTs and begin earning royalties.</span>
           <div className="left">
-            <span className="song-poster"></span>
+            <img src={songPoster} alt="" className="song-poster" />
             <span className="song-info">
-                <h1>Song Title</h1>
+                <h1>In My Head</h1>
                 <div className="artist-info">
-                  <span className="artist-img"></span>
-                  <h5>Artist Name</h5>
+                  <img src={artistImg} alt="" className="artist-img" />
+                  <h5>Stevie Flowers</h5>
                 </div>
             </span> 
           </div>

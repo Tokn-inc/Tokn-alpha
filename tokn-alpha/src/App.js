@@ -28,13 +28,16 @@ function App() {
           <div>
             <img src={background} className="background" alt="background" />
           </div>
-          <a href="https://twitter.com/toknmusicapp">
+          <a href="https://twitter.com/toknmusicapp" target="_blank">
             <img src={twitter} className="twitter" alt="twitter" />
           </a>
-          <a href="https://t.me/toknmusic">
+          <a href="https://t.me/toknmusic" target="_blank">
             <img src={telegram} className="telegram" alt="telegram" />
           </a>
-          <a href="https://www.instagram.com/toknmusicapp/?hl=en">
+          <a
+            href="https://www.instagram.com/toknmusicapp/?hl=en"
+            target="_blank"
+          >
             <img src={instagram} className="instagram" alt="instagram" />
           </a>
           <Switch>

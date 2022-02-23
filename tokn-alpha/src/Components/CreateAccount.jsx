@@ -25,7 +25,8 @@ function CreateAccount() {
   var upperCaseLetters = /[A-Z]/g;
   var lowerCaseLetters = /[a-z]/g;
   var numbers = /[0-9]/g;
-
+  var iChars = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
+  var invalidChars = "<>/";
   const dispatch = useDispatch();
   const {address, balance} = useSelector((state) => state.wallet)
   const {error, loggedIn} = useSelector((state) => state.user)
@@ -33,7 +34,7 @@ function CreateAccount() {
 
  useEffect(() => {
   if(!address){
-    alert("Connect wallet first!")
+    // alert("Connect wallet first!")
     window.location = '/metamask-login'
   } 
   if(loggedIn){
@@ -145,6 +146,24 @@ function CreateAccount() {
       alert("Connect wallet first.");
       window.location = "/metamask"
     }else{
+      for (var i = 0; i < username.length; i++) {
+    if (iChars.indexOf(username.charAt(i)) != -1) {
+        alert ("Your username has special characters. \nThese are not allowed.\nPlease remove them and try again.");
+      
+    }
+  }
+    for (var i = 0; i < email.length; i++) {
+    if (invalidChars.indexOf(email.charAt(i)) != -1) {
+        alert ("Your email has invalid characters. \n<,/,> are not allowed.\n Please remove them and try again.");
+      
+    }
+}
+  for (var i = 0; i < password.length; i++) {
+    if (invalidChars.indexOf(password.charAt(i)) != -1) {
+        alert ("Your password has invalid characters. \n<,/,> are not allowed.\n Please remove them and try again.");
+      
+    }
+}
       console.log(validEmail, " ", validPass, " ", match);
        if(validEmail && validPass && match){
       
@@ -168,6 +187,8 @@ function CreateAccount() {
    
     
   }
+
+  
   return (
     <div className="App">
         <div className="white-container">

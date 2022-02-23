@@ -13,6 +13,7 @@ function ComingSoon() {
       </button>
       {/* </Link> */}
       <Link to="/metamask-login"><p className="login-link">Login</p></Link>
+      <p className="copyright">Copyright @ 2022 Tokn, Inc.</p>
     </div>
   );
 }
