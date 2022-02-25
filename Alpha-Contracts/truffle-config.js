@@ -77,7 +77,7 @@ module.exports = {
       provider: function () {
         return new HDWalletProvider(
           mnemonic,
-          "https://speedy-nodes-nyc.moralis.io/7ce69af8c67a5c54f3533468/polygon/mainnet"
+          "https://matic-mainnet.chainstacklabs.com"
         );
       },
       network_id: 137,
