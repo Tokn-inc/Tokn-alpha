@@ -88,7 +88,7 @@ export const connectWallet = (web3) => (dispatch) => {
       try {
         await window.ethereum.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: "0x4" }],
+          params: [{ chainId: "0x89" }],
         });
       } catch (switchError) {
         // This error code indicates that the chain has not been added to MetaMask.
@@ -98,16 +98,14 @@ export const connectWallet = (web3) => (dispatch) => {
               method: "wallet_addEthereumChain",
               params: [
                 {
-                  chainId: "0x4",
-                  chainName: "Rinkeby Test Network",
-                  rpcUrls: [
-                    "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
-                  ] /* ... */,
+                  chainId: "0x89",
+                  chainName: "Matic Mainnet",
+                  rpcUrls: ["https://polygon-rpc.com/"] /* ... */,
                 },
               ],
             });
           } catch (addError) {
-            alert("Please switch to rinkeby network.");
+            alert("Please switch to polygon network.");
           }
         }
         // handle other "switch" errors
